@@ -1,0 +1,91 @@
+html, body { overflow-x: hidden; } body { position: relative; }
+
+body{
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(233, 233, 233);
+    font-family: "Roboto", sans-serif;
+    font-family: "Host Grotesk", sans-serif;
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+}
+.bm-bg-light {
+    background-color: rgb(233, 233, 233);
+}
+
+.bm-bg-primary-light {
+    background-color: rgba(46, 112, 211, 0.3);
+}
+
+.bm-header-primary {
+    background-color: rgb(38, 89, 165);
+    box-shadow: 5px 6px 20px rgba(23, 43, 49, 0.5);
+    margin-bottom: 8px;
+    color: rgb(255, 255, 255);
+    padding: 6px;
+    padding-left: 10px;
+    padding-top: 7px;
+    font-size: 20px;
+    border-radius: 6px;
+    font-family: "Roboto", sans-serif;
+}
+
+.bm-page {
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 5px;
+    padding: 0;
+    background-color: rgb(233, 233, 233);
+    height: 95vh;
+}
+.bm-text-success {
+    color: rgb(67, 199, 27); 
+}
+.bm-alert-info {
+    background-color:rgba(121, 208, 235, 0.5);
+    box-shadow: 2px 2px 13px rgb(148, 178, 190);
+    border: 1px solid rgb(148, 178, 190);
+    color: rgb(14, 14, 14);
+    padding: 10px;
+    border-radius: 5px;  
+}
+.bm-alert-success {
+    background-color:rgba(71, 182, 37, 0.5);
+    box-shadow: 2px 2px 13px rgb(118, 138, 110);
+    border: 1px solid rgb(112, 192, 112);
+    color: rgb(14, 14, 14);
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+.bm-alert-warning {
+    background-color:rgba(243, 231, 58, 0.4);
+    box-shadow: 2px 2px 13px rgb(174, 190, 148);
+    border: 1px solid rgb(216, 218, 146);
+    color: rgb(14, 14, 14);
+    padding: 10px;
+    border-radius: 5px;   
+}
+.bm-alert-danger {
+    background-color:rgba(224, 28, 28, 0.4);
+    box-shadow: 2px 2px 13px rgb(190, 148, 148);
+    border: 1px solid rgb(212, 155, 155);
+    color: rgb(14, 14, 14);
+    padding: 10px;
+    border-radius: 5px;   
+}
+
+form {
+    background-color: white;
+    padding: 5px;
+}
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
