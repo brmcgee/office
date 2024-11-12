@@ -14,7 +14,7 @@ function addJobFormHtml (custId) {
         <form action="http://localhost:5200/add-job" method="POST" id="addJob">
         
             <div class="table-type bm-header-primary" id="jobHeader">
-                <h5>Add Job customer ID ${custId}</h5>
+                <h5>${custId} Loading...</h5>
             </div>
 
             <div class="row pb-2 pt-3">

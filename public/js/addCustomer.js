@@ -11,9 +11,7 @@ function addCustomerFormHtml () {
         
                     <form action="http://localhost:5200/add-customer" method="POST" id="addCustomer">
                     
-                        <div class="table-type bm-header-primary">
-                            <h5 >Add Customer</h5>
-                        </div>
+                        ${header('Add Customer')}
             
                         <div class="row pb-2 pt-3">
             

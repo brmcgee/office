@@ -39,14 +39,22 @@ function getIcon(status){
 
 }
 
+function header(title) {
+    return `
+        <div class="bm-header-primary">
+            <h5 class="">${title}<span class="float-end pe-3 badge bg-light text-primary"></span><span id="jobHeader"</h5>
+        </div>  
+    `;
+}
+
 
 function printHeader () {
     return `
-       <div class="print-header d-flex justify-content-between px-2 pb-5 border">
-      <h4>backoffice</h4>
+       <div class="print-header d-flex justify-content-between px-2 pb-2 border">
+      <h4><img class="pe-1 pb-1" src="public/assets/icons/house.png" alt="" width="40"> Backoffice</h4>
         <span class="pull-right hidden-print">
             <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5">
-               <i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> 
+              <img class="pe-1 pb-1" src="public/assets/icons/print.png" alt="" width="30"> 
                Print
             </a>
         </span>
