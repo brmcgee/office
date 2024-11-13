@@ -68,7 +68,7 @@ function jobTemplateInnerAll(job) {
     html += `
                 <tr>
                     <th scope="row p-0 py-1">
-                        <button onclick="fetchJobCard(this.id)" id="${job.jobId}" class="bg-transparent border-0">
+                        <button onclick="fetchJobDetails(this.id)" id="${job.jobId}" class="bg-transparent border-0">
                             <img class="pb-1" src="public/assets/icons/open-green.png" alt="" width="22">
                         </button>
                     </th>                

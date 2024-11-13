@@ -157,7 +157,8 @@ function handleAddJob() {
             if (this.readyState == 4 && this.status == 200) {
                 console.log('added')
 
-                customersRoot.innerHTML = '<div class="bm-alert-success">Successfully added job...</div> '
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                customersRoot.innerHTML = getJobsByCustomers(custId);
                 var $myForm = $("#addJob");
                 $myForm.submit(function(){
                     $myForm.submit(function(){

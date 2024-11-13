@@ -15,7 +15,15 @@ async function handleGetJobsByCustomer(custId) {
         try {
             const data = await response.json();
               
-                if (data.length == 0) { customersRoot.innerHTML =`<p class='bm-alert-info'>No jobs found....</p>`; return }
+                if (data.length == 0) { 
+                    customersRoot.innerHTML =`<p class='bm-alert-info'>No jobs found....</p>`
+                    customersRoot.innerHTML += `<div class="d-flex justify-content-center">
+                                                    <button id="${custId}" class="bg-transparent border-0" type="button" onclick="fetchCustomerList()">
+                                                        <img class="pb-1" src="public/assets/icons/blue-rocket.png" alt="" width="22"> Customer List
+                                                    </button>
+                                                </div>`
+                    return;
+                 }
                 html += jobByCustomerTemplate(data) 
                 customersRoot.innerHTML += html;
         
@@ -106,7 +114,7 @@ function jobByCustomerTemplateInnerSingle(job) {
     html += `
                 <tr>
                     <th scope="row">
-                        <button onclick="fetchJobCard(this.id)" id="${job[0].jobId}" class="bg-transparent border-0">
+                        <button onclick="fetchJobDetails(this.id)" id="${job[0].jobId}" class="bg-transparent border-0">
                             <img class="pb-1" src="public/assets/icons/open-green.png" alt="" width="22">
                         </button>
                     </th>
@@ -125,7 +133,7 @@ function jobByCustomerTemplateInner(job) {
     html += `
                 <tr>
                     <th scope="row">
-                        <button onclick="fetchJobCard(this.id)" id="${job.jobId}" class="bg-transparent border-0">
+                        <button onclick="fetchJobDetails(this.id)" id="${job.jobId}" class="bg-transparent border-0">
                             <img class="pb-1" src="public/assets/icons/open-green.png" alt="" width="22">
                         </button>
                     </th>
