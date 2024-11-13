@@ -21,8 +21,6 @@ function htmlJobDetails(job) {
 
 
 
-
-
             <div class="customer col-12 col-md-4">
             <div class="bm-job-container bm-bg-gray-light ms-1 px-2 pb-1">
          
@@ -116,19 +114,15 @@ function htmlJobDetails(job) {
                <div class="date col-12 col-md-4">
                   <div class="bm-job-container px-2 pb-2 pt-2 me-1 bm-bg-gray-light">
                
-                    
-                        
-                        <div class="d-flex justify-content-end px-1 pb-1 ">
-                           <label for="jDate" class="text-dark pe-2">Date</label>
-                           <input type="text" class="form-control bm-input" id="jDate" name="jDate" value="${job[0].jDate}">
-                        </div>
-               
-               
                         <div class="d-flex justify-content-end px-1 pb-1 ">
                            <label for="po" class="text-dark pe-2">PO</label>
                            <input type="text" class="form-control bm-input" id="po" name="po" value="${job[0].po} ">
                         </div>
-                 
+                        
+                        <div class="d-flex justify-content-end px-1 pb-1 ">
+                           <label for="jDate" class="text-dark pe-2">Date</label>
+                           <input type="text" class="form-control bm-input" id="jDate" name="jDate" value="${job[0].jDate}">
+                        </div>               
 
             
             
@@ -159,9 +153,11 @@ function htmlJobDetails(job) {
 
 
             
-            <div class="d-flex flex-wrap justify-content-between">
+            <div class="d-flex flex-wrap justify-content-between g-2 pb-2">
                   <div class="mx-auto">
-                     <img src="public/assets/images/placeholder.jpeg" class="img-fluid mb-2 me-2" alt="" style="width:300px; height:230px;">
+                     <a href=" ${job[0].jImg || 'public/assets/images/placeholder.jpeg'}" target="_blank">
+                     <img src="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " class="img-fluid mb-2 me-2" alt="" style="width:300px; height:230px;">
+                     </a>
                   </div>
                   <div class="mx-auto">
                      <img src="public/assets/images/placeholder.jpeg" class="img-fluid mb-2 me-2" alt="" style="width:300px; height:230px;">

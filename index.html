@@ -110,23 +110,28 @@
                             onclick="fetchAllJobs()"><img class="pe-1 pb-1" src="public/assets/icons/folder-purple.png" alt="" width="20"></i>All Jobs</a>
                         </li>
                             
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"> 
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                               onclick="fetchJobsByStatus('Scheduled')"> 
                             <img class="pe-1 pb-1" src="public/assets/icons/schedule-r.png" alt="" width="20">Scheduled</a>
                         </li>
 
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                               onclick="fetchJobsByStatus('Ordered')">
                             <img class="pe-1 pb-1" src="public/assets/icons/order-p.png" alt="" width="20">Ordered</a>
                         </li>
                         
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                               onclick="fetchJobsByStatus('In-Progress')">
                             <img class="pe-1 pb-1" src="public/assets/icons/in-progress-b.png" alt="" width="20">In-Progress</a>
                         </li>
 
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-                            <img class="pe-1 pb-1" src="public/assets/icons/contract-pink.png" alt="" width="20">Estimate</a>
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                            onclick="fetchJobsByStatus('Estimate')">
+                            <img class="pe-1 pb-1" src="public/assets/icons/contract-pink.png" alt="" width="20">Estimates</a>
                         </li>
 
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                            onclick="fetchJobsByStatus('Completed')">
                             <img class="pe-1 pb-1" src="public/assets/icons/done-green.png" alt="" width="20">Completed</a>
                         </li>
 
@@ -204,6 +209,7 @@
     <script src="public/js/fetchJobCard.js"></script>
     <script src="public/js/fetchCustInfoAddJob.js"></script>
     <script src="public/js/jobDetail.js"></script>
+    <script src="public/js/fetchJobsByStatus.js"></script>
 
 
 
@@ -215,3 +221,4 @@
 </html>
 
 
+<!-- @ BRM 2024 -->

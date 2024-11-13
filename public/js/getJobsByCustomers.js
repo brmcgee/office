@@ -101,6 +101,7 @@ function jobByCustomerTemplate(jobs) {
     html += `  </tbody>
             </table>`;
 
+    html += customersButton();
     return html;
 }
 
