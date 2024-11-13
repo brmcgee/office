@@ -24,7 +24,7 @@ function htmlJobDetails(job) {
 
 
             <div class="customer col-12 col-md-4">
-            <div class="bm-job-container bg-light px-2 pb-1">
+            <div class="bm-job-container bm-bg-gray-light ms-1 px-2 pb-1">
          
                <div class="w-100">
                   <label for="fname">First</label>
@@ -72,9 +72,9 @@ function htmlJobDetails(job) {
          </div>  
 
                <div class="job col-12 col-md-4">
-                  <div class="bm-job-container">
+                  <div class="bm-job-container  px-2 pb-2">
 
-                     <div class="bg-light d-flex justify-content-end px-3 pb-1 ">
+                     <div class="bm-bg-gray-light d-flex justify-content-end pb-1 py-3 px-1 ">
                         <label for="phone" class="pe-2">Phone</label>
                         <input type="text" class="form-control bm-input" id="phone" name="phone">
                      </div>
@@ -114,28 +114,29 @@ function htmlJobDetails(job) {
                </div>
                
                <div class="date col-12 col-md-4">
-                  <div class="bm-job-container pe-1">
+                  <div class="bm-job-container px-2 pb-2 pt-2 me-1 bm-bg-gray-light">
                
                     
-                        <div class="w-100">
-                           <label for="jDate" class="text-primary">Date</label>
+                        
+                        <div class="d-flex justify-content-end px-1 pb-1 ">
+                           <label for="jDate" class="text-dark pe-2">Date</label>
                            <input type="text" class="form-control bm-input" id="jDate" name="jDate" value="${job[0].jDate}">
                         </div>
                
                
-                        <div class="w-100">
-                           <label for="po" class="text-primary">PO</label>
+                        <div class="d-flex justify-content-end px-1 pb-1 ">
+                           <label for="po" class="text-dark pe-2">PO</label>
                            <input type="text" class="form-control bm-input" id="po" name="po" value="${job[0].po} ">
                         </div>
                  
 
             
             
-                     <div class="w-100">
-                        <label for="progress" class="form-label text-primary ">Status: </label>
+                     <div class="d-flex justify-content-end px-1 pb-1 ">
+                        <label for="progress" class="form-label text-primary pe-2">Status: </label>
                         <select type="text" class="form-control py-1" id="progress" name="progress" required >
                         <option selected>${job[0].status}</option>
-                           <option value="Estimate">Estimate </option>
+                           <option value="Estimate">Estimate</option>
                            <option value="Ordered">Ordered</option>
                            <option value="Scheduled">Scheduled</option>
                            <option value="In-Progress">In-Progress</option>
@@ -146,7 +147,7 @@ function htmlJobDetails(job) {
             
                      <div class="w-100">
                         <label for="jNotes" class="form-label">Job Notes:</label>
-                        <textarea type="text" class="form-control" id="jNotes" placeholder="Notes" name="jNotes" rows="8">
+                        <textarea type="text" class="form-control" id="jNotes" placeholder="Notes" name="jNotes" rows="10">
                         ${job[0].jNotes.trimStart()}</textarea>
                      </div>
             
@@ -161,10 +162,10 @@ function htmlJobDetails(job) {
             
             <div class="d-flex flex-wrap justify-content-between">
                   <div class="mx-auto">
-                     <img src="public/assets/images/placeholder.jpeg" class="img-fluid mb-2 me-2" alt="" style="width:290px; height:220px;">
+                     <img src="public/assets/images/placeholder.jpeg" class="img-fluid mb-2 me-2" alt="" style="width:300px; height:230px;">
                   </div>
                   <div class="mx-auto">
-                     <img src="public/assets/images/placeholder.jpeg" class="img-fluid mb-2 me-2" alt="" style="width:290px; height:220px;">
+                     <img src="public/assets/images/placeholder.jpeg" class="img-fluid mb-2 me-2" alt="" style="width:300px; height:230px;">
                   </div>
 
                   
@@ -186,6 +187,7 @@ function htmlJobDetails(job) {
 async function handleFetchJobDetails(jobId) {
 
    let url = `${host}/job/${jobId}`;
+
 
    try {
        const response = await fetch(url);

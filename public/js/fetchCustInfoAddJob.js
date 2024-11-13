@@ -19,7 +19,7 @@ async function handleFetchCustInfoAddJob(custId) {
         let html = ``;
         try {
             const data = await response.json();
-                jName.value = `${data[0].fname} ${data[0].lname}`;
+                jName.value = `${data[0].lname}`;
                 jAddress.value = `${data[0].address}`;
                 jCity.value = `${data[0].city}`;
                 jState.value = `${data[0].state}`;

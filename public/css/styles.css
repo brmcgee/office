@@ -16,8 +16,16 @@ body{
     background-color: rgb(233, 233, 233);
 }
 
+
+
 .bm-bg-primary-light {
     background-color: rgba(46, 112, 211, 0.3);
+
+}
+.bm-bg-gray-light {
+    background-color: rgba(221, 235, 247, 0.3);
+    border-radius: 6px;
+    box-shadow: rgba(221, 235, 247, 0.2);
 }
 
 .bm-header-primary {
@@ -30,8 +38,6 @@ body{
     padding-top: 7px;
     font-size: 20px;
     border-radius: 0px;
-
-
 }
 
 .bm-page {
