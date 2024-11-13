@@ -93,3 +93,13 @@ function printDiv(divId) {
     window.print();
     location.reload();
 }
+
+function getTechName (techId) {
+    if (techId == '0') { return 'Admin'}
+    if (techId == '1') { return 'Albert'}
+    if (techId == '2') { return 'Mike'}
+    if (techId == '3') { return 'Tom'}
+    if (techId == '4') { return 'Brian'}
+    if (techId == '5') { return 'House'}
+    else return 'Admin'
+}

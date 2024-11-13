@@ -168,7 +168,19 @@ function htmlJobDetails(job) {
                            <option value="Completed">Completed</option>
                         </select>
                      </div>
-            
+
+                     <div class="d-flex justify-content-end px-1 pb-1 ">
+                        <label for="progress" class="form-label pe-2">Tech: <span class="text-primary">${getTechName(job[0].tech)}</span> </label>
+                        <select type="text" class="form-control py-1" id="progress" name="progress" required >
+                        //  <option selected>${(job[0].tech)}</option>
+                           <option value="0">Admin</option>
+                           <option value="1">Albert</option>
+                           <option value="2">Mike</option>
+                           <option value="3">Tom</option>
+                           <option value="4">Brian</option>
+                           <option value="5">House</option>
+                        </select>
+                     </div>           
             
                      <div class="w-100">
                         <label for="jNotes" class="form-label">Job Notes:</label>
@@ -195,6 +207,8 @@ function htmlJobDetails(job) {
                   <div class="mx-auto">
                      <img src="public/assets/images/placeholder.jpeg" class="img-fluid mb-2 me-2" alt="" style="width:300px; height:230px;">
                   </div>
+
+                
                   
             </div>
 
@@ -207,6 +221,17 @@ function htmlJobDetails(job) {
 
     return segment;
 }
+
+
+
+/* <div class="mx-auto pt-2">
+<img src="public/assets/logos/slack-700-400.png" class="img-fluid mb-2 me-2" alt="" style="width:200px; height:130px;">
+<div class="small">
+  <p class="py-0 my-0">1455 E Pittsburgh McKeesport Blvd<p>
+  <span class="py-0 my-0" >North Versailles PA 15666<span>
+</div>
+</div>   */
+
 
 async function handleFetchJobDetails(jobId) {
 
