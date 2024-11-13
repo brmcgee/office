@@ -16,65 +16,126 @@ function htmlJobDetails(job) {
     segment += `
       
          <div class="bg-white py-3">   
-            <div class="customer-banner header row pb-5 ps-2">
+            <div class="customer-banner header row pb-5">
 
-               <div class="job col-6 col-sm-4">
+
+
+
+
+
+            <div class="customer col-12 col-md-4">
+            <div class="bm-job-container bg-light px-2 pb-1">
+         
+               <div class="w-100">
+                  <label for="fname">First</label>
+                  <input type="text" class="form-control bm-input" id="fname" name="fname">
+               </div>
+      
+      
+               <div class="w-100">
+                  <label for="lname">Last</label>
+                  <input type="text" class="form-control bm-input" id="lname" name="lname">
+               </div>
+      
+      
+               <div class="w-100">
+                  <label for="address">Address</label>
+                  <input type="text" class="form-control bm-input" id="address" name="address">
+               </div>
+      
+      
+               <div class="w-100">
+                  <label for="city">City</label>
+                  <input type="text" class="form-control bm-input" id="city" name="city">
+               </div>
+      
+      
+               
+               <div class="w-100">
+                  <label for="state">State</label>
+                  <input type="text" class="form-control bm-input" id="state" name="state">
+               </div>
+
+               <div class="w-100">
+                  <label for="zip">Zip</label>
+                  <input type="text" class="form-control bm-input" id="zip" name="zip">
+               </div>
+
+               <div class="w-100">
+                  <label for="cell">Cell</label>
+                  <input type="text" class="form-control bm-input" id="cell" name="cell">
+               </div>  
+                          
+            
+               
+            </div>
+         </div>  
+
+               <div class="job col-12 col-md-4">
                   <div class="bm-job-container">
 
+                     <div class="bg-light d-flex justify-content-end px-3 pb-1 ">
+                        <label for="phone" class="pe-2">Phone</label>
+                        <input type="text" class="form-control bm-input" id="phone" name="phone">
+                     </div>
+
                      <div class="w-100">
-                        <label for="jname">Job name</label>
+                        <label for="jname" >Job name</label>
                         <input type="text" class="form-control bm-input" id="jname" name="jname" value="${job[0].jName}">
                      </div>
 
                      <div class="w-100">
                         <label for="jPhone">Job phone</label>
                         <input type="text" class="form-control bm-input" id="jPhone" name="jPhone" value="${job[0].jPhone}">
-                     </div>       
+                     </div>  
+      
+                     <div class="w-100">
+                        <label for="jCity">Job address</label>
+                        <input type="text" class="form-control bm-input" id="jAddress" name="jAddress" value="${job[0].jAddress}">
+                     </div>  
 
                      <div class="w-100">
-                        <label for="jAddress">Job address</label>
-                        <input type="text" class="form-control bm-input" id="jAddress" name="jAddress" value="${job[0].jAddress}">
-                     </div>             
-            
+                        <label for="jCity">Job city</label>
+                        <input type="text" class="form-control bm-input" id="jCity" name="jCity" value="${job[0].jCity}">
+                     </div>  
+
                      <div class="w-100">
-                        <label for="phone">Phone</label>
-                        <input type="text" class="form-control bm-input" id="phone" name="phone">
-                     </div>
-            
-            
+                        <label for="jState">Job state</label>
+                        <input type="text" class="form-control bm-input" id="jState" name="jState" value="${job[0].jState}">
+                     </div>  
+
                      <div class="w-100">
-                        <label for="cell">Cell</label>
-                        <input type="text" class="form-control bm-input" id="cell" name="cell">
-                     </div>   
-            
+                        <label for="jZip">Job zip</label>
+                        <input type="text" class="form-control bm-input" id="jZip" name="jZip" value="${job[0].jZip}">
+                     </div>            
 
                      
                   </div>
                </div>
                
-               <div class="date col-6 col-md-4">
-                  <div class="bm-job-container">
+               <div class="date col-12 col-md-4">
+                  <div class="bm-job-container pe-1">
                
-                     <div class="row">
-                        <div class="w-50">
-                           <label for="jDate">Date</label>
+                    
+                        <div class="w-100">
+                           <label for="jDate" class="text-primary">Date</label>
                            <input type="text" class="form-control bm-input" id="jDate" name="jDate" value="${job[0].jDate}">
                         </div>
                
                
-                        <div class="w-50">
-                           <label for="po">PO</label>
+                        <div class="w-100">
+                           <label for="po" class="text-primary">PO</label>
                            <input type="text" class="form-control bm-input" id="po" name="po" value="${job[0].po} ">
                         </div>
-                     </div>
+                 
 
             
             
                      <div class="w-100">
-                        <label for="progress" class="form-label">Status: </label>
-                        <select type="text" class="form-control" id="progress" name="progress" required >
+                        <label for="progress" class="form-label text-primary ">Status: </label>
+                        <select type="text" class="form-control py-1" id="progress" name="progress" required >
                         <option selected>${job[0].status}</option>
-                           <option value="Estimate">Estimate</option>
+                           <option value="Estimate">Estimate </option>
                            <option value="Ordered">Ordered</option>
                            <option value="Scheduled">Scheduled</option>
                            <option value="In-Progress">In-Progress</option>
@@ -84,56 +145,15 @@ function htmlJobDetails(job) {
             
             
                      <div class="w-100">
-                        <label for="jNotes" class="form-label">Notes:</label>
-                        <textarea type="text" class="form-control" id="jNotes" placeholder="Notes" name="jNotes" rows="5">
-                        ${job[0].jNotes.trim().trimStart()}</textarea>
+                        <label for="jNotes" class="form-label">Job Notes:</label>
+                        <textarea type="text" class="form-control" id="jNotes" placeholder="Notes" name="jNotes" rows="8">
+                        ${job[0].jNotes.trimStart()}</textarea>
                      </div>
             
             
                   </div>
                </div>
-
-               <div class="customer col-12 col-md-4">
-                  <div class="bm-job-container">
-               
-                     <div class="w-100">
-                        <label for="fname">First</label>
-                        <input type="text" class="form-control bm-input" id="fname" name="fname">
-                     </div>
-            
-            
-                     <div class="w-100">
-                        <label for="lname">Last</label>
-                        <input type="text" class="form-control bm-input" id="lname" name="lname">
-                     </div>
-            
-            
-                     <div class="w-100">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control bm-input" id="address" name="address">
-                     </div>
-            
-            
-                     <div class="w-100">
-                        <label for="city">City</label>
-                        <input type="text" class="form-control bm-input" id="city" name="city">
-                     </div>
-            
-            
-                     <div class="row">
-                     <div class="col-6">
-                        <label for="state">State</label>
-                        <input type="text" class="form-control bm-input" id="state" name="state">
-                     </div>
-
-                     <div class="col-6">
-                        <label for="zip">Zip</label>
-                        <input type="text" class="form-control bm-input" id="zip" name="zip">
-                     </div>
-                     </div>
-                     
-                  </div>
-               </div>      
+    
 
             </div>
 
@@ -149,15 +169,13 @@ function htmlJobDetails(job) {
 
                   
             </div>
-            <div class="btn-group">
-               <button id="1" class="bg-transparent border-0" type="button" onclick="getJobsByCustomers(${job[0].custId})">
-                     <img class="pb-1" src="public/assets/icons/work-green.png" alt="" width="22">
-                     Back Job List
+            <div class="btn-group pt-1">
+               <button id="1" class="bg-transparent border-0 pe-5" type="button" onclick="getJobsByCustomers(${job[0].custId})">
+                  <img class="pb-1" src="public/assets/icons/folder-green.png" alt="" width="22">
+                  Customer Jobs
                </button>
-               <button id="1" class="bg-transparent border-0" type="button" onclick="fetchCustomerList()">
-                     <img class="pb-1" src="public/assets/icons/blue-rocket.png" alt="" width="22">
-                     Customers
-               </button>
+               ${customersButton()}
+               ${jobsButton()}
             </div>
          </div>   
     `;

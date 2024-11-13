@@ -19,6 +19,27 @@ function clearMenu() {
     menuRoot.innerHTML = '';
 }
 
+
+
+function customersButton () {
+    return ` 
+            <div class="d-flex justify-content-center">
+                <button class="bg-transparent border-0" type="button" onclick="fetchCustomerList()">
+                    <img class="pb-1" src="public/assets/icons/blue-rocket.png" alt="" width="22"> Customers List
+                </button>
+            </div>    
+    `;
+}
+
+function jobsButton () {
+    return `  
+            <div class="d-flex justify-content-center">
+                <button class="bg-transparent border-0" type="button" onclick="fetchAllJobs()">
+                    <img class="pb-1" src="public/assets/icons/work-pink.png" alt="" width="22"> Jobs List
+                </button>
+            </div>    
+    `;
+}
 function getIcon(status){
 
     if (status == 'Scheduled') {
@@ -50,7 +71,7 @@ function header(title) {
 
 function printHeader () {
     return `
-       <div class="print-header d-flex justify-content-between px-2 pb-2">
+       <div class="print-header d-flex justify-content-between px-1 pb-0">
       <h4><img class="pe-1 pb-1" src="public/assets/icons/house.png" alt="" width="40"> Backoffice</h4>
         <span class="pull-right hidden-print">
             <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5">

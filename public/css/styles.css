@@ -21,16 +21,17 @@ body{
 }
 
 .bm-header-primary {
-    background-color: rgb(38, 89, 165);
-    box-shadow: 5px 6px 20px rgba(23, 43, 49, 0.5);
+    background-color: rgb(43, 105, 197);
+    box-shadow: 5px 6px 12px rgba(23, 43, 49, 0.5);
     margin-bottom: 8px;
     color: rgb(255, 255, 255);
     padding: 6px;
     padding-left: 10px;
     padding-top: 7px;
     font-size: 20px;
-    border-radius: 6px;
-    font-family: "Roboto", sans-serif;
+    border-radius: 0px;
+
+
 }
 
 .bm-page {
@@ -53,7 +54,7 @@ body{
     border-radius: 5px;  
 }
 .bm-alert-success {
-    background-color:rgba(71, 182, 37, 0.5);
+    background-color:rgba(89, 218, 50, 0.5);
     box-shadow: 2px 2px 13px rgb(118, 138, 110);
     border: 1px solid rgb(112, 192, 112);
     color: rgb(14, 14, 14);

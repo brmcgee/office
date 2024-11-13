@@ -17,11 +17,7 @@ async function handleGetJobsByCustomer(custId) {
               
                 if (data.length == 0) { 
                     customersRoot.innerHTML =`<p class='bm-alert-info'>No jobs found....</p>`
-                    customersRoot.innerHTML += `<div class="d-flex justify-content-center">
-                                                    <button id="${custId}" class="bg-transparent border-0" type="button" onclick="fetchCustomerList()">
-                                                        <img class="pb-1" src="public/assets/icons/blue-rocket.png" alt="" width="22"> Customer List
-                                                    </button>
-                                                </div>`
+                    customersRoot.innerHTML += customersButton();
                     return;
                  }
                 html += jobByCustomerTemplate(data) 
