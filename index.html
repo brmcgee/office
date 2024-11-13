@@ -23,7 +23,7 @@
 
     <div class="dashboard col-12 col-sm-3 col-md-3 border-end d-flex justify-content-between flex-column">
 
-        <div class="left p-3 flex-shrink-0" style="width: 280px;">
+        <div class="left p-3 flex-shrink-0" style="width: 260px;">
 
             <div class="logo">
                 <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
@@ -65,7 +65,7 @@
                                 Overview</a>
                             </li>
 
-                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" onclick="htmlJobDetails()">
+                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
                                 Updates</a>
                             </li>
 
@@ -105,9 +105,31 @@
                     </button>
                     <div class="collapse" id="orders-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
+
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                            onclick="fetchAllJobs()"><img class="pe-1 pb-1" src="public/assets/icons/folder-purple.png" alt="" width="20"></i>All Jobs</a>
+                        </li>
+                            
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"> 
+                            <img class="pe-1 pb-1" src="public/assets/icons/schedule-r.png" alt="" width="20">Scheduled</a>
+                        </li>
+
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                            <img class="pe-1 pb-1" src="public/assets/icons/order-p.png" alt="" width="20">Ordered</a>
+                        </li>
+                        
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                            <img class="pe-1 pb-1" src="public/assets/icons/in-progress-b.png" alt="" width="20">In-Progress</a>
+                        </li>
+
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                            <img class="pe-1 pb-1" src="public/assets/icons/contract-pink.png" alt="" width="20">Estimate</a>
+                        </li>
+
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                            <img class="pe-1 pb-1" src="public/assets/icons/done-green.png" alt="" width="20">Completed</a>
+                        </li>
+
                     </ul>
                     </div>
                 </li>

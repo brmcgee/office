@@ -147,8 +147,7 @@ function htmlJobDetails(job) {
             
                      <div class="w-100">
                         <label for="jNotes" class="form-label">Job Notes:</label>
-                        <textarea type="text" class="form-control" id="jNotes" placeholder="Notes" name="jNotes" rows="10">
-                        ${job[0].jNotes.trimStart()}</textarea>
+                        <textarea type="text" class="form-control" id="jNotes" placeholder="Notes" name="jNotes" rows="10">${job[0].jNotes.trimStart()}</textarea>
                      </div>
             
             

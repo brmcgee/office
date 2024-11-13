@@ -16,8 +16,12 @@ body{
     background-color: rgb(233, 233, 233);
 }
 
-
-
+textarea{
+    white-space:pre;
+}
+textarea{
+        white-space:pre-wrap;
+}
 .bm-bg-primary-light {
     background-color: rgba(46, 112, 211, 0.3);
 

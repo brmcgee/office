@@ -56,7 +56,10 @@ function getIcon(status){
     }
     if (status == 'Completed') {
         return '<img class="pe-1 pb-1" src="public/assets/icons/done-green.png" alt="" width="25">';
+    } else {
+        return '<img class="pe-1 pb-1" src="public/assets/icons/error-red.png" alt="" width="25">';
     }
+
 
 }
 
