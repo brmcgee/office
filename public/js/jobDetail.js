@@ -10,12 +10,43 @@ function htmlJobDetails(job) {
 
 
     let segment = '';
-    segment += printHeader();
+
+    segment += `
+       <div class="print-header justify-content-between px-1 pb-0">
+
+
+
+         <div class="btn-group pt-1">
+            <button id="1" class="bg-transparent border-0 pe-2" type="button" onclick="getJobsByCustomers(${job[0].custId})">
+               <img class="pb-1" src="public/assets/icons/folder-green.png" alt="" width="22">
+               Customer Jobs
+            </button>
+
+            ${customersButton()}
+
+            ${jobsButton()}
+
+
+            <div class="print-header d-flex justify-content-between px-1 pb-0">
+
+            <span class="pull-right hidden-print">
+               <a href="javascript:;"  onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5">
+               <img class="pe-1 pb-1" src="public/assets/icons/print-blue.png" alt="" width="30"> 
+                  Print
+               </a>
+            </span>
+         </div>
+        
+      
+
+
+   </div>`;
+
     segment += header('Job Details');
    
     segment += `
       
-         <div class="bg-white py-3">   
+         <div class="bg-white py-3 printable" id="workOrder">   
             <div class="customer-banner header row pb-5">
 
 
@@ -72,8 +103,8 @@ function htmlJobDetails(job) {
                <div class="job col-12 col-md-4">
                   <div class="bm-job-container  px-2 pb-2">
 
-                     <div class="bm-bg-gray-light d-flex justify-content-end pb-1 py-3 px-1 ">
-                        <label for="phone" class="pe-2">Phone</label>
+                     <div class="bm-bg-gray-light d-flex justify-content-end pb-1 py-3 px-0 ">
+                        <label for="phone" class="pe-1">Phone</label>
                         <input type="text" class="form-control bm-input" id="phone" name="phone">
                      </div>
 
@@ -154,24 +185,22 @@ function htmlJobDetails(job) {
 
             
             <div class="d-flex flex-wrap justify-content-between g-2 pb-2">
+
                   <div class="mx-auto">
                      <a href=" ${job[0].jImg || 'public/assets/images/placeholder.jpeg'}" target="_blank">
                      <img src="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " class="img-fluid mb-2 me-2" alt="" style="width:300px; height:230px;">
                      </a>
                   </div>
+
                   <div class="mx-auto">
                      <img src="public/assets/images/placeholder.jpeg" class="img-fluid mb-2 me-2" alt="" style="width:300px; height:230px;">
                   </div>
-
                   
             </div>
-            <div class="btn-group pt-1">
-               <button id="1" class="bg-transparent border-0 pe-5" type="button" onclick="getJobsByCustomers(${job[0].custId})">
-                  <img class="pb-1" src="public/assets/icons/folder-green.png" alt="" width="22">
-                  Customer Jobs
-               </button>
-               ${customersButton()}
-               ${jobsButton()}
+
+
+            
+
             </div>
          </div>   
     `;

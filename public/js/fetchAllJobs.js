@@ -42,7 +42,7 @@ function jobsTemplateAll(jobs) {
                     <tr>
                         <th scope="col">View</th>                    
                         <th scope="col">Job Name</th>
-                        <th scope="col">Address</th>
+                        <th scope="col">PO #</th>
                         <th scope="col">Status</th>
                         <th scope="col">Phone</th> 
                     </tr>
@@ -73,7 +73,7 @@ function jobTemplateInnerAll(job) {
                         </button>
                     </th>                
                     <td>${job.jName}</td>
-                    <td>${job.jAddress} ${job.jCity}</td>
+                    <td>${job.po}</td>
                     <td>${getIcon(job.status)}${job.status}</td>
                     <td>${job.jPhone}</td>                    
                 </tr> 

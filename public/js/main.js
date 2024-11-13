@@ -84,3 +84,12 @@ function printHeader () {
         </span>
    </div>`;
 }
+
+function printDiv(divId) {
+    var printContents = document.getElementById(divId).innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML= printHeader() + printContents;
+    window.print();
+    location.reload();
+}
