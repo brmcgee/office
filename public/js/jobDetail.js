@@ -8,18 +8,17 @@ function fetchJobDetails(jobId){
 
 function htmlJobDetails(job) {
 
-
     let segment = '';
-
+//  toolbar  
     segment += `
        <div class="print-header justify-content-between px-1 pb-0">
 
 
 
-         <div class="btn-group pt-1">
+         <div class="d-flex justify-content-start pt-1">
             <button id="1" class="bg-transparent border-0 pe-2" type="button" onclick="getJobsByCustomers(${job[0].custId})">
-               <img class="pb-1" src="public/assets/icons/folder-green.png" alt="" width="22">
-               Customer Jobs
+               <img class="pb-1" src="public/assets/icons/back-green.png" alt="" width="22">
+               Back
             </button>
 
             ${customersButton()}
@@ -29,196 +28,209 @@ function htmlJobDetails(job) {
 
             <div class="print-header d-flex justify-content-between px-1 pb-0">
 
-            <span class="pull-right hidden-print">
+            <span class="">
                <a href="javascript:;"  onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5">
                <img class="pe-1 pb-1" src="public/assets/icons/print-blue.png" alt="" width="30"> 
                   Print
                </a>
             </span>
+
+            <div class="float-end">
+               <a href="javascript:;"  onclick="submitEditJob()" class="btn btn-sm btn-white m-b-10 p-l-5">
+               <img class="pe-1 pb-1" src="public/assets/icons/save-red.png" alt="" width="30"> 
+                  Save
+               </a>
+            </div>
          </div>
-        
-      
-
-
-   </div>`;
-
+      </div>
+   `;
+// header
     segment += header('Job Details');
-   
-    segment += `
-      
+    segment += `  
          <div class="bg-white py-3 printable" id="workOrder">   
-            <div class="customer-banner header row pb-5">
+            <div class="customer-banner header row pb-1">
+   `
+   // customer container  
+   segment += `
+               <div class="customer col-12 col-md-4">
+               <div class="bm-job-container bm-bg-gray-light ms-1 px-2">
 
+                  <input name="custId" id="custId" value="${job[0].custId}" hidden>
+                  <input name="jobId" id="jobId" value="${job[0].jobId}" hidden>
 
-
-
-            <div class="customer col-12 col-md-4">
-            <div class="bm-job-container bm-bg-gray-light ms-1 px-2 pb-1">
+                  <div class="w-100">
+                     <label for="fname">First</label>
+                     <input type="text" class="form-control bm-input" id="fname" name="fname">
+                  </div>
          
-               <div class="w-100">
-                  <label for="fname">First</label>
-                  <input type="text" class="form-control bm-input" id="fname" name="fname">
-               </div>
-      
-      
-               <div class="w-100">
-                  <label for="lname">Last</label>
-                  <input type="text" class="form-control bm-input" id="lname" name="lname">
-               </div>
-      
-      
-               <div class="w-100">
-                  <label for="address">Address</label>
-                  <input type="text" class="form-control bm-input" id="address" name="address">
-               </div>
-      
-      
-               <div class="w-100">
-                  <label for="city">City</label>
-                  <input type="text" class="form-control bm-input" id="city" name="city">
-               </div>
-      
-      
-               
-               <div class="w-100">
-                  <label for="state">State</label>
-                  <input type="text" class="form-control bm-input" id="state" name="state">
-               </div>
-
-               <div class="w-100">
-                  <label for="zip">Zip</label>
-                  <input type="text" class="form-control bm-input" id="zip" name="zip">
-               </div>
-
-               <div class="w-100">
-                  <label for="cell">Cell</label>
-                  <input type="text" class="form-control bm-input" id="cell" name="cell">
-               </div>  
-                          
-            
-               
-            </div>
-         </div>  
-
-               <div class="job col-12 col-md-4">
-                  <div class="bm-job-container  px-2 pb-2">
-
-                     <div class="bm-bg-gray-light d-flex justify-content-end pb-1 py-3 px-0 ">
-                        <label for="phone" class="pe-1">Phone</label>
-                        <input type="text" class="form-control bm-input" id="phone" name="phone">
-                     </div>
-
-                     <div class="w-100">
-                        <label for="jname" >Job name</label>
-                        <input type="text" class="form-control bm-input" id="jname" name="jname" value="${job[0].jName}">
-                     </div>
-
-                     <div class="w-100">
-                        <label for="jPhone">Job phone</label>
-                        <input type="text" class="form-control bm-input" id="jPhone" name="jPhone" value="${job[0].jPhone}">
-                     </div>  
-      
-                     <div class="w-100">
-                        <label for="jCity">Job address</label>
-                        <input type="text" class="form-control bm-input" id="jAddress" name="jAddress" value="${job[0].jAddress}">
-                     </div>  
-
-                     <div class="w-100">
-                        <label for="jCity">Job city</label>
-                        <input type="text" class="form-control bm-input" id="jCity" name="jCity" value="${job[0].jCity}">
-                     </div>  
-
-                     <div class="w-100">
-                        <label for="jState">Job state</label>
-                        <input type="text" class="form-control bm-input" id="jState" name="jState" value="${job[0].jState}">
-                     </div>  
-
-                     <div class="w-100">
-                        <label for="jZip">Job zip</label>
-                        <input type="text" class="form-control bm-input" id="jZip" name="jZip" value="${job[0].jZip}">
-                     </div>            
-
-                     
+         
+                  <div class="w-100">
+                     <label for="lname">Last</label>
+                     <input type="text" class="form-control bm-input" id="lname" name="lname">
                   </div>
-               </div>
-               
-               <div class="date col-12 col-md-4">
-                  <div class="bm-job-container px-2 pb-2 pt-2 me-1 bm-bg-gray-light">
-               
-                        <div class="d-flex justify-content-end px-1 pb-1 ">
-                           <label for="po" class="text-dark pe-2">PO</label>
-                           <input type="text" class="form-control bm-input" id="po" name="po" value="${job[0].po} ">
-                        </div>
-                        
-                        <div class="d-flex justify-content-end px-1 pb-1 ">
-                           <label for="jDate" class="text-dark pe-2">Date</label>
-                           <input type="text" class="form-control bm-input" id="jDate" name="jDate" value="${job[0].jDate}">
-                        </div>               
-
-            
-            
-                     <div class="d-flex justify-content-end px-1 pb-1 ">
-                        <label for="progress" class="form-label text-primary pe-2">Status: </label>
-                        <select type="text" class="form-control py-1" id="progress" name="progress" required >
-                        <option selected>${job[0].status}</option>
-                           <option value="Estimate">Estimate</option>
-                           <option value="Ordered">Ordered</option>
-                           <option value="Scheduled">Scheduled</option>
-                           <option value="In-Progress">In-Progress</option>
-                           <option value="Completed">Completed</option>
-                        </select>
-                     </div>
-
-                     <div class="d-flex justify-content-end px-1 pb-1 ">
-                        <label for="progress" class="form-label pe-2">Tech: <span class="text-primary">${getTechName(job[0].tech)}</span> </label>
-                        <select type="text" class="form-control py-1" id="progress" name="progress" required >
-                        //  <option selected>${(job[0].tech)}</option>
-                           <option value="0">Admin</option>
-                           <option value="1">Albert</option>
-                           <option value="2">Mike</option>
-                           <option value="3">Tom</option>
-                           <option value="4">Brian</option>
-                           <option value="5">House</option>
-                        </select>
-                     </div>           
-            
-                     <div class="w-100">
-                        <label for="jNotes" class="form-label">Job Notes:</label>
-                        <textarea type="text" class="form-control" id="jNotes" placeholder="Notes" name="jNotes" rows="10">${job[0].jNotes.trimStart()}</textarea>
-                     </div>
-            
-            
+         
+         
+                  <div class="w-100">
+                     <label for="address">Address</label>
+                     <input type="text" class="form-control bm-input" id="address" name="address">
                   </div>
-               </div>
-    
-
-            </div>
-
-
-            
-            <div class="d-flex flex-wrap justify-content-between g-2 pb-2">
-
-                  <div class="mx-auto">
-                     <a href=" ${job[0].jImg || 'public/assets/images/placeholder.jpeg'}" target="_blank">
-                     <img src="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " class="img-fluid mb-2 me-2" alt="" style="width:300px; height:230px;">
-                     </a>
+         
+         
+                  <div class="w-100">
+                     <label for="city">City</label>
+                     <input type="text" class="form-control bm-input" id="city" name="city">
                   </div>
-
-                  <div class="mx-auto">
-                     <img src="public/assets/images/placeholder.jpeg" class="img-fluid mb-2 me-2" alt="" style="width:300px; height:230px;">
-                  </div>
-
-                
+         
+         
                   
-            </div>
+                  <div class="w-100">
+                     <label for="state">State</label>
+                     <input type="text" class="form-control bm-input" id="state" name="state">
+                  </div>
+
+                  <div class="w-100">
+                     <label for="zip">Zip</label>
+                     <input type="text" class="form-control bm-input" id="zip" name="zip">
+                  </div>
+
+                  <div class="w-100">
+                     <label for="cell">Cell</label>
+                     <input type="text" class="form-control bm-input" id="cell" name="cell">
+                  </div>  
+                           
+                  <div class="bm-bg-gray-light pb-1">
+                     <label for="phone" class="pe-1">Phone</label>
+                     <input type="text" class="form-control bm-input" id="phone" name="phone">
+                  </div>
+             
+                  
+               </div>
+            </div>  
+   `
+   // job container
+   segment += `
+                  <div class="job col-12 col-md-4">
+                     <div class="bm-job-container  px-2">
+
+                        <div class="w-100">
+                           <label for="jName" >Job name</label>
+                           <input type="text" class="form-control bm-input" id="jName" name="jName" value="${job[0].jName}">
+                        </div>
+
+                        <div class="w-100">
+                           <label for="jPhone">Job phone</label>
+                           <input type="text" class="form-control bm-input" id="jPhone" name="jPhone" value="${job[0].jPhone}">
+                        </div>  
+         
+                        <div class="w-100">
+                           <label for="jCity">Job address</label>
+                           <input type="text" class="form-control bm-input" id="jAddress" name="jAddress" value="${job[0].jAddress}">
+                        </div>  
+
+                        <div class="w-100">
+                           <label for="jCity">Job city</label>
+                           <input type="text" class="form-control bm-input" id="jCity" name="jCity" value="${job[0].jCity}">
+                        </div>  
+
+                        <div class="w-100">
+                           <label for="jState">Job state</label>
+                           <input type="text" class="form-control bm-input" id="jState" name="jState" value="${job[0].jState}">
+                        </div>  
+
+                        <div class="w-100">
+                           <label for="jZip">Job zip</label>
+                           <input type="text" class="form-control bm-input" id="jZip" name="jZip" value="${job[0].jZip}">
+                        </div>            
+
+                        
+                     </div>
+                  </div>
+   
+   `
+   // date container  
+   segment += `               
+                  <div class="date col-12 col-md-4">
+                     <div class="bm-job-container px-2 me-1 bm-bg-gray-light">
+                  
+                           <div class="d-flex justify-content-end px-1 pb-1 ">
+                              <label for="po" class="text-dark pe-2">PO</label>
+                              <input type="text" class="form-control bm-input" id="po" name="po" value="${job[0].po} ">
+                           </div>
+                           
+                           <div class="d-flex justify-content-end px-1 pb-1 ">
+                              <label for="jDate" class="text-dark pe-2">Date</label>
+                              <input type="text" class="form-control bm-input" id="jDate" name="jDate" value="${job[0].jDate}">
+                           </div>               
+
+               
+               
+                        <div class="d-flex justify-content-end px-1 pb-1 ">
+                           <label for="progress" class="form-label text-primary pe-2">Status: </label>
+                           <select type="text" class="form-control py-1" id="progress" name="progress" required >
+                           <option selected>${job[0].status}</option>
+                              <option value="Estimate">Estimate</option>
+                              <option value="Ordered">Ordered</option>
+                              <option value="Scheduled">Scheduled</option>
+                              <option value="In-Progress">In-Progress</option>
+                              <option value="Completed">Completed</option>
+                           </select>
+                        </div>
+
+                        <div class="d-flex justify-content-end px-1 pb-1 ">
+                           <label for="tech" class="form-label pe-2">Tech: <span class="text-primary">${getTechName(job[0].tech)}</span> </label>
+                           <select type="text" class="form-control py-1" id="tech" name="tech" required >
+                           //  <option selected>${(job[0].tech)}</option>
+                              <option value="0">Admin</option>
+                              <option value="1">Albert</option>
+                              <option value="2">Mike</option>
+                              <option value="3">Tom</option>
+                              <option value="4">Brian</option>
+                              <option value="5">House</option>
+                           </select>
+                        </div>           
+               
+                        <div class="w-100">
+                           <label for="jNotes" class="form-label">Job Notes:</label>
+                           <textarea type="text" class="form-control" id="jNotes" placeholder="Notes" name="jNotes" rows="10">${job[0].jNotes.trimStart()}</textarea>
+                        </div>
+               
+               
+                     </div>
+                  </div>
+      
+
+               </div>
 
 
-            
+               
+               <div class="row">
 
-            </div>
-         </div>   
-    `;
+                     <div class="col-12 col-sm-6 d-flex flex-wrap justify-content-around px-1">
+                        <a href=" ${job[0].jImg || 'public/assets/images/placeholder.jpeg'}" target="_blank">
+                           <img src="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " 
+                                class="img-fluid mb-2 me-2 rounded" alt="" style="width:320px; height:270px;">
+                        </a>
+                           <input id="jImg" name="jImg" value="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-75">
+                        
+                     </div>
 
+                     <div class="col-12 col-sm-6 d-flex flex-wrap justify-content-around px-1">
+                        <a href=" ${job[0].jScope || 'public/assets/images/placeholder.jpeg'}" target="_blank">
+                           <img src="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " 
+                                 class="img-fluid mb-2" alt="" style="width:320px; height:270px;">
+                        </a>
+                           <input id="jScope" name="jScope" value="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-75">
+                       
+                     </div>            
+                     
+               </div>
+
+
+               
+
+               </div>
+            </div>   
+      `;
     return segment;
 }
 
@@ -269,7 +281,6 @@ async function fetchCustomer (custId){
         let html = ``;
         try {
             const data = await response.json();
-            console.log(data)
             addCustomerToJobDetails(data)
             return;
 
@@ -294,4 +305,56 @@ function addCustomerToJobDetails(customer){
    let cell = document.getElementById('cell').value = customer[0].cell;
    let zip = document.getElementById('zip').value = customer[0].zip;
    return;
+}
+
+async function submitEditJob() {
+
+   let custId = document.getElementById('custId').value;
+   let fname = document.getElementById('fname').value;
+   let lname = document.getElementById('lname').value;
+   let address = document.getElementById('address').value;
+   let city = document.getElementById('city').value;
+   let state = document.getElementById('state').value;
+   let zip = document.getElementById('zip').value;   
+   let phone = document.getElementById('phone').value;
+   let cell = document.getElementById('cell').value;
+
+   let jName = document.getElementById('jName').value;
+   let jPo = document.getElementById('po').value;
+   let jDate = document.getElementById('jDate').value;
+   let jPhone = document.getElementById('jPhone').value;
+   let jAddress = document.getElementById('jAddress').value;
+   let jCity = document.getElementById('jCity').value;
+   let jState = document.getElementById('jState').value;
+   let jZip = document.getElementById('jZip').value;
+   let jNotes = document.getElementById('jNotes').value;
+   let jImg = document.getElementById('jImg').value;
+   let jScope = document.getElementById('jScope').value;
+
+   let progress = document.getElementById('progress').value;
+   let tech = document.getElementById('tech').value;
+   let jobId = document.getElementById('jobId').value;
+
+
+   let url = `${host}/update-record`;
+   let params = `jobId=${jobId}&&jScope=${jScope}&&jImg=${jImg}&&jName=${jName}&&jPo=${jPo}&&jDate=${jDate}&&jPhone=${jPhone}&&jAddress=${jAddress}&&jCity=${jCity}&&jState=${jState}&&tech=${tech}&&jZip=${jZip}&&jNotes=${jNotes}&&status=${progress}&&custId=${custId}&&fname=${fname}&&lname=${lname}&&address=${address}&&city=${city}&&state=${state}&&zip=${zip}&&phone=${phone}&&cell=${cell}`;
+   
+   customersRoot.innerHTML = `Loading.....`;
+   var xmlhttp = new XMLHttpRequest();
+   xmlhttp.onreadystatechange = function() {
+
+            if (this.readyState == 4 && this.status == 200) {
+ 
+               customersRoot.innerHTML = fetchJobDetails(jobId) || `<div class="spinner-border text-primary" role="status">
+                                                                        <span class="visually-hidden">Loading...</span>
+                                                                     </div>`;
+               // customersRoot.innerHTML = 'Successfullu updated!'
+
+            }
+      };
+      
+      xmlhttp.open("POST", url, true);
+      xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xmlhttp.send(params);
+
 }
