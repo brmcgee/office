@@ -37,30 +37,30 @@ textarea{
 
 }
 .bm-bg-gray-light {
-    background-color: rgba(187, 187, 187, 0.3);
-    border: 1px solid rgb(173, 173, 173);
-    border-radius: 0px;
-    box-shadow: 0px 1px 1px 1px rgb(187, 187, 187);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 3px;
+    box-shadow: 0px 1px 12px 1px rgb(187, 187, 187);
 
 }
 .form-label, label {
     font-size: 13px;
     color: rgb(88, 88, 88);
-    padding-top: 1px;
+    padding-top: 6px;
+    padding-bottom: 0px;
     padding-left: 5px;
-
+    margin-bottom: 0px;
     
 }
 .form-control {
-    font-size: 14px;
+    font-size: 16px;
     border: 1px solid rgb(187, 187, 187);
     background-color: rgb(250, 250, 250) ;
     color: black;
     border-radius: 3px;
-    padding-bottom: 4px;
+    padding-bottom: 5px;
     padding-top: 5px;
     margin-top: 2px;
-
 }
 
 .bm-text-primary {

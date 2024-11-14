@@ -53,7 +53,7 @@ function htmlJobDetails(job) {
    // customer container  
    segment += `
                <div class="customer col-12 col-md-4">
-               <div class="bm-job-container bm-bg-gray-light mx-1 px-2 pt-1 mt-1 ps-3">
+               <div class="bm-job-container bm-bg-gray-light mx-1 px-2 pt-1 mt-1">
 
                   <input name="custId" id="custId" value="${job[0].custId}" hidden>
                   <input name="jobId" id="jobId" value="${job[0].jobId}" hidden>
@@ -98,9 +98,9 @@ function htmlJobDetails(job) {
                      <input type="text" class="form-control bm-input" id="cell" name="cell">
                   </div>  
                            
-                  <div class="pb-1">
-                     <label for="phone" class="pe-1">Phone</label>
-                     <input type="text" class="form-control bm-input" id="phone" name="phone">
+                  <div class="pb-2">
+                     <label for="phone" hidden class="">Phone</label>
+                     <input type="text" hidden class="form-control bm-input" id="phone" name="phone">
                   </div>
              
                   
@@ -137,7 +137,7 @@ function htmlJobDetails(job) {
                            <input type="text" class="form-control bm-input" id="jState" name="jState" value="${job[0].jState}">
                         </div>  
 
-                        <div class="w-100">
+                        <div class="w-100 pb-5 mb-2">
                            <label for="jZip">Job zip</label>
                            <input type="text" class="form-control bm-input mb-2" id="jZip" name="jZip" value="${job[0].jZip}">
                         </div>            
@@ -191,7 +191,7 @@ function htmlJobDetails(job) {
                
                         <div class="w-100">
                            <label for="jNotes" class="form-label">Job Notes:</label>
-                           <textarea type="text" class="form-control mb-1" id="jNotes" placeholder="Notes" name="jNotes" rows="10">${job[0].jNotes.trimStart()}</textarea>
+                           <textarea type="text" class="form-control mb-2" id="jNotes" placeholder="Notes" name="jNotes" rows="10">${job[0].jNotes.trimStart()}</textarea>
                         </div>
                
                
@@ -205,19 +205,19 @@ function htmlJobDetails(job) {
 
                <div class="row mt-3">
 
-                     <div class="col-12 col-sm-6 d-flex flex-wrap justify-content-start  p-px-3  mt-1 border">
+                     <div class="col-12 col-md-6 d-flex flex-wrap justify-content-start  p-px-3  mt-1 border">
                         <a href=" ${job[0].jImg || 'public/assets/images/placeholder.jpeg'}" target="_blank">
                            <img src="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " 
-                                class="img-fluid mb-2 px-2" alt="" style="width:320px; height:270px;">
+                                class="img-fluid img-thumbnail mb-2 px-2" alt="" style="width:600px; height:auto;">
                         </a>
                            <input id="jImg" name="jImg" value="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
                         
                      </div>
 
-                     <div class="col-12 col-sm-6 d-flex flex-wrap justify-content-start  px-3  mt-1 border">
+                     <div class="col-12 col-md-6 d-flex flex-wrap justify-content-start  px-3  mt-1 border">
                         <a href=" ${job[0].jScope || 'public/assets/images/placeholder.jpeg'}" target="_blank">
                            <img src="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " 
-                                 class="img-fluid mb-2 px-2" alt="" style="width:320px; height:270px;">
+                                 class="img-fluid img-thumbnail mb-2 px-2" alt="" style="width:600px; height:auto;">
                         </a>
                            <input id="jScope" name="jScope" value="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
                        
