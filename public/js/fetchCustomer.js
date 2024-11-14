@@ -19,10 +19,10 @@ async function handleFetchCustomersList(target) {
                 customersRoot.innerHTML += html;
 
         }
-        catch (parseError) {
-            customersRoot.innerHTML = `<p class='alert alert-warning'>Network Error ${parseError}</p>`
-            console.log('Failed to parse JSON: ' + parseError);
-        }
+            catch (parseError) {
+                customersRoot.innerHTML = `<p class='alert alert-warning'>Network Error ${parseError}</p>`
+                console.log('Failed to parse JSON: ' + parseError);
+            }
     } catch (networkError) {
         console.log('Network request failed: ', networkError);
         
@@ -68,19 +68,26 @@ function customerTemplateInner(customer) {
     html += `
                 <tr>
                     <th scope="row">
+
                         <button id="${customer.custId}" class="bg-transparent border-0" type="button" onclick="getJobsByCustomers(this.id)">
                             <img class="pb-1" src="public/assets/icons/work-green.png" alt="" width="22">
-                        
                         </button>
                     </td>
+
                     <td id="">
-                    
                         <button id="${customer.custId}" class="bg-transparent border-0" type="button" onclick="addJob(this.id)">
                             <img class="pb-1" src="public/assets/icons/circle-blue-add.png" alt="" width="20">
                         </button>
                     </td> 
-                    <td> ${customer.lname}, ${customer.fname}</td>  
+
+                    <td>    
+                        <a href="#" type="button" onclick="fetchCustomerRecord(${customer.custId})" class="text-decoration-none text-dark fw-semibold cursor-pointer ">
+                            <span class="text-primary">${customer.lname}, ${customer.fname}</span>
+                        </a>
+                    </td>  
+
                     <td>${customer.address} ${customer.city}, ${customer.state.toUpperCase()}</td>
+
                     <td>${customer.phone} </td>                   
                 </tr> 
             </div>  

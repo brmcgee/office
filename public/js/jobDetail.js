@@ -339,6 +339,7 @@ async function submitEditJob() {
    let url = `${host}/update-record`;
    let params = `jobId=${jobId}&&jScope=${jScope}&&jImg=${jImg}&&jName=${jName}&&jPo=${jPo}&&jDate=${jDate}&&jPhone=${jPhone}&&jAddress=${jAddress}&&jCity=${jCity}&&jState=${jState}&&tech=${tech}&&jZip=${jZip}&&jNotes=${jNotes}&&status=${progress}&&custId=${custId}&&fname=${fname}&&lname=${lname}&&address=${address}&&city=${city}&&state=${state}&&zip=${zip}&&phone=${phone}&&cell=${cell}`;
    
+   customersRoot.innerHTML = '';
    customersRoot.innerHTML = `Loading.....`;
    var xmlhttp = new XMLHttpRequest();
    xmlhttp.onreadystatechange = function() {

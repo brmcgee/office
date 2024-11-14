@@ -1,7 +1,7 @@
 function addJob(custId) {
     clearMenu();
     customersRoot.innerHTML = addJobFormHtml(custId);  
-    console.log(addJobFetchCustomerId(custId))
+
 }
 
 function addJobFormHtml (custId) {
@@ -144,7 +144,6 @@ function handleAddJob() {
     let custId = document.getElementById('custId').value;
 
     if (progress == 'Select option...') { alert('Select job status..'); return;}
-    console.log(progress)
     if (jName == '' || jPo == '' || jDate == '' || jAddress == '' || custId == '' || jZip == '' || progress == '') { alert('Enter job details'); return;}
 
     
@@ -155,7 +154,8 @@ function handleAddJob() {
     xmlhttp.onreadystatechange = function() {
 
             if (this.readyState == 4 && this.status == 200) {
-                console.log('added')
+   
+
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 customersRoot.innerHTML = getJobsByCustomers(custId);
@@ -172,7 +172,7 @@ function handleAddJob() {
       xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       xmlhttp.send(params);
 
-    console.log(params)
+
 
 }
 

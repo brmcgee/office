@@ -1,9 +1,56 @@
-function addCustomer() {
-    clearMenu();
-    customersRoot.innerHTML = addCustomerFormHtml();  
+function fetchCustomerRecord (custId) {
+    customersRoot.innerHTML = customerRecordHeader(custId);
+    customersRoot.innerHTML += htmlCustomerRecordForm();
+
+    handleFetchCustomerRecord (custId);
+    // in async function gets data and populates addCustomerForm
+    populateCustomerForm(data);
+
 }
 
-function addCustomerFormHtml () {
+async function handleFetchCustomerRecord(custId) {
+    let url = `${host}/customers/${custId}`;
+    
+    try {
+            let html = '';
+            const response = await fetch(url);
+                try {
+                    const data = await response.json()
+
+                    populateCustomerForm(data);
+
+                } 
+                catch (parseError) {
+                    console.log(`Failed to parse JSON: ${parseError}`);
+                }
+
+        } catch (networkError) {
+            console.log(`Network request failed: ${networkError}`)
+    }
+
+}
+
+function populateCustomerForm(data) {
+  
+
+    let custId = document.getElementById('custId').value = data[0].custId;
+    let fname = document.getElementById('fname').value = data[0].fname;
+    let lname = document.getElementById('lname').value = data[0].lname;
+    let date = document.getElementById('date').value = data[0].date;
+    let address = document.getElementById('address').value = data[0].address;
+    let city = document.getElementById('city').value = data[0].city;
+    let state = document.getElementById('state').value = data[0].state;
+    let zip = document.getElementById('zip').value = data[0].zip;   
+    let phone = document.getElementById('phone').value = data[0].phone;
+    let cell = document.getElementById('cell').value = data[0].cell;
+    let notes = document.getElementById('notes').value = data[0].notes;
+    let img = document.getElementById('img').value = data[0].img;
+    let email = document.getElementById('email').value = data[0].email;
+
+}
+
+
+function htmlCustomerRecordForm () {
     let html = `
     
              <div id="addCustomerForm" class="m-0 p-0">
@@ -11,7 +58,7 @@ function addCustomerFormHtml () {
         
                     <form action="http://localhost:5200/add-customer" method="POST" id="addCustomer">
                     
-                        ${header('Add Customer')}
+                        ${header('Customer Record')}
             
                         <div class="row pb-2 pt-3">
             
@@ -27,7 +74,7 @@ function addCustomerFormHtml () {
             
                             <div class="col-sm-8 col-md-4">
                                 <label for="date" class="form-label">Date:</label>
-                                <input type="date" class="form-control" id="date" required name="date">
+                                <input type="text" class="form-control" id="date" required name="date">
                             </div>
         
                             <div class="col-sm-4 col-md-2">
@@ -103,7 +150,7 @@ function addCustomerFormHtml () {
                         <div class="form-footer d-flex justify-content-end">
                             <button type="button" class="btn btn-danger me-1" onclick="clearRoot()">Close</button>
                             <button type="button" class="btn btn-secondary me-1" onclick="clearCustomerForm()">Clear</button>
-                            <button type="button" onclick="handleAddCustomer()" class="btn btn-primary">Submit</button>
+                            <button type="button" onclick="handleUpdateCustomerRecord()" class="btn btn-primary">Submit</button>
                         </div>
             
                   </form>
@@ -116,61 +163,49 @@ function addCustomerFormHtml () {
     return html;
 }
 
-function handleAddCustomer() {
+function handleUpdateCustomerRecord() {
 
-    let url = `${host}/add-customer`;
-
-    let fname = document.getElementById('fname').value;
-    let lname = document.getElementById('lname').value;
-    let address = document.getElementById('address').value;
-    let city = document.getElementById('city').value;
-    let state = document.getElementById('state').value;
-    let zip = document.getElementById('zip').value;
-    let date = document.getElementById('date').value;
-    let notes = document.getElementById('notes').value;
-    let phone = document.getElementById('phone').value;
-    let cell = document.getElementById('cell').value;
-    let email = document.getElementById('email').value;
-    let custId = '';
-
-    if (fname == '' || lname == '' || address == '' || city == '' || state == '' || date == '' || phone == '') { alert('Enter job details'); return;}
-
-    let params = `fname=${fname}&&lname=${lname}&&address=${address}&&city=${city}&&state=${state}&&zip=${zip}&&date=${date}
-                    &&notes=${notes}&&phone=${phone}&&custId=${custId}&&cell=${cell}&&email=${email}`;
-    
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-
-            if (this.readyState == 4 && this.status == 200) {
-                console.log('added')
-
-                customersRoot.innerHTML = '<div class="bm-alert-success">Successfully added customer...</div> '
-                var $myForm = $("#addCustomer");
-                $myForm.submit(function(){
-                    $myForm.submit(function(){
-                        return false;
-                    });
-                });
-            }
-      };
-      
-      xmlhttp.open("POST", url, true);
-      xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      xmlhttp.send(params);
-
-
+    alert('need to update record in backend')
 }
 
 
-function clearCustomerForm(){
-    let fname = document.getElementById('fname').value = '';
-    let lname = document.getElementById('lname').value = '';
-    let address = document.getElementById('address').value = '';
-    let city = document.getElementById('city').value = '';
-    let state = document.getElementById('state').value = '';
-    let zip = document.getElementById('zip').value = '';
-    let date = document.getElementById('date').value = '';
-    let notes = document.getElementById('notes').value = '';
-    let phone = document.getElementById('phone').value = '';
-    let cell = document.getElementById('cell').value = '';
+
+
+function customerRecordHeader(custId) {
+    return `
+    
+    
+    
+ <div class="print-header justify-content-between px-1 pb-0">
+
+
+
+         <div class="d-flex justify-content-start pt-1">
+            <button id="1" class="bg-transparent border-0 pe-2" type="button" onclick="getJobsByCustomers(${custId})">
+               <img class="pb-1" src="public/assets/icons/open-green.png" alt="" width="22">
+               Open
+            </button>
+
+            ${customersButton()}
+
+
+            <div class="print-header d-flex justify-content-between px-1 pb-0">
+
+            <span class="">
+               <a href="javascript:;"  onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5">
+               <img class="pe-1 pb-1" src="public/assets/icons/print-blue.png" alt="" width="30"> 
+                  Print
+               </a>
+            </span>
+
+            <div class="float-end">
+               <a href="javascript:;"  onclick="alert('handle save needs added to db ... bm')" class="btn btn-sm btn-white m-b-10 p-l-5">
+               <img class="pe-1 pb-1" src="public/assets/icons/save-red.png" alt="" width="30"> 
+                  Save
+               </a>
+            </div>
+         </div>
+      </div>    
+    
+    `
 }
