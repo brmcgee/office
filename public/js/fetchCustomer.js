@@ -82,7 +82,7 @@ function customerTemplateInner(customer) {
 
                     <td>    
                         <a href="#" type="button" onclick="fetchCustomerRecord(${customer.custId})" class="text-decoration-none text-dark fw-semibold cursor-pointer ">
-                            <span class="text-primary">${customer.lname}, ${customer.fname}</span>
+                            <span class="bm-text-primary bm-hover">${customer.lname}, ${customer.fname}</span><br>
                         </a>
                     </td>  
 

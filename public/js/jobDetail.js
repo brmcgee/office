@@ -15,7 +15,7 @@ function htmlJobDetails(job) {
 
 
 
-         <div class="d-flex justify-content-start pt-1">
+         <div class="d-flex justify-content-start pt-0">
             <button id="1" class="bg-transparent border-0 pe-2" type="button" onclick="getJobsByCustomers(${job[0].custId})">
                <img class="pb-1" src="public/assets/icons/back-green.png" alt="" width="22">
                Back
@@ -47,13 +47,13 @@ function htmlJobDetails(job) {
 // header
     segment += header('Job Details');
     segment += `  
-         <div class="bg-white py-3 printable" id="workOrder">   
-            <div class="customer-banner header row pb-1">
+         <div class="printable" id="workOrder">   
+            <div class="customer-banner header row pb-0 ">
    `
    // customer container  
    segment += `
                <div class="customer col-12 col-md-4">
-               <div class="bm-job-container bm-bg-gray-light ms-1 px-2">
+               <div class="bm-job-container bm-bg-gray-light mx-1 px-2 pt-1 mt-1 ps-3">
 
                   <input name="custId" id="custId" value="${job[0].custId}" hidden>
                   <input name="jobId" id="jobId" value="${job[0].jobId}" hidden>
@@ -98,7 +98,7 @@ function htmlJobDetails(job) {
                      <input type="text" class="form-control bm-input" id="cell" name="cell">
                   </div>  
                            
-                  <div class="bm-bg-gray-light pb-1">
+                  <div class="pb-1">
                      <label for="phone" class="pe-1">Phone</label>
                      <input type="text" class="form-control bm-input" id="phone" name="phone">
                   </div>
@@ -110,7 +110,7 @@ function htmlJobDetails(job) {
    // job container
    segment += `
                   <div class="job col-12 col-md-4">
-                     <div class="bm-job-container  bm-bg-gray-light ms-1 px-2">
+                     <div class="bm-job-container  bm-bg-gray-light mx-1 px-2 pt-1 mt-1">
 
                         <div class="w-100">
                            <label for="jName" >Job name</label>
@@ -139,7 +139,7 @@ function htmlJobDetails(job) {
 
                         <div class="w-100">
                            <label for="jZip">Job zip</label>
-                           <input type="text" class="form-control bm-input" id="jZip" name="jZip" value="${job[0].jZip}">
+                           <input type="text" class="form-control bm-input mb-2" id="jZip" name="jZip" value="${job[0].jZip}">
                         </div>            
 
                         
@@ -150,26 +150,22 @@ function htmlJobDetails(job) {
    // date container  
    segment += `               
                   <div class="date col-12 col-md-4">
-                     <div class="bm-job-container px-2 pt-2 pb-2 me-1 bm-bg-gray-light">
+                     <div class="bm-job-container bm-bg-gray-light mx-1 px-2 pt-1 mt-1">
                   
-
-
-
-
                            <div class="d-flex justify-content-end px-1 pb-1 ">
-                              <label for="po" class="text-dark pe-2"  style="width:100px;">PO</label>
+                              <label for="po" class="text-dark pe-2 text-end me-2"  style="width:140px;">PO</label>
                               <input type="text" class="form-control bm-input text-end" id="po" name="po" value="${job[0].po} ">
                            </div>
                            
                            <div class="d-flex justify-content-end px-1 pb-1 ">
-                              <label for="jDate" class="text-dark pe-2"  style="width:100px;">Date</label>
+                              <label for="jDate" class="text-dark pe-2 text-end me-2"  style="width:140px;">Date</label>
                               <input type="text" class="form-control bm-input text-end" id="jDate" name="jDate" value="${job[0].jDate}">
                            </div>               
 
                
                
                         <div class="d-flex justify-content-end px-1 pb-1 ">
-                           <label for="progress" class="form-label pe-2"  style="width:100px;">Status: </label>
+                           <label for="progress" class="form-label pe-2 text-end me-2"  style="width:140px;">Status: </label>
                            <select type="text" class="form-control py-1" id="progress" name="progress" required >
                            <option selected class="text-end">${job[0].status}</option>
                               <option value="Estimate">Estimate</option>
@@ -181,7 +177,7 @@ function htmlJobDetails(job) {
                         </div>
 
                         <div class="d-flex justify-content-end px-1 pb-1 ">
-                           <label for="tech" class="form-label pe-2"  style="width:100px;">Tech: <span class="bm-text-primary">${getTechName(job[0].tech)}</span> </label>
+                           <label for="tech" class="form-label pe-2 text-end me-2"  style="width:140px;">Tech: <span class="bm-text-primary">${getTechName(job[0].tech)}</span> </label>
                            <select type="text" class="form-control py-1" id="tech" name="tech" required >
                             <option selected class="text-end">${(job[0].tech)}</option>
                               <option value="0">Admin</option>
@@ -195,7 +191,7 @@ function htmlJobDetails(job) {
                
                         <div class="w-100">
                            <label for="jNotes" class="form-label">Job Notes:</label>
-                           <textarea type="text" class="form-control" id="jNotes" placeholder="Notes" name="jNotes" rows="10">${job[0].jNotes.trimStart()}</textarea>
+                           <textarea type="text" class="form-control mb-1" id="jNotes" placeholder="Notes" name="jNotes" rows="10">${job[0].jNotes.trimStart()}</textarea>
                         </div>
                
                
@@ -206,24 +202,24 @@ function htmlJobDetails(job) {
                </div>
 
 
-               
-               <div class="row">
 
-                     <div class="col-12 col-sm-6 d-flex flex-wrap justify-content-around px-1">
+               <div class="row mt-3">
+
+                     <div class="col-12 col-sm-6 d-flex flex-wrap justify-content-start  p-px-3  mt-1 border">
                         <a href=" ${job[0].jImg || 'public/assets/images/placeholder.jpeg'}" target="_blank">
                            <img src="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " 
-                                class="img-fluid mb-2 me-2 rounded" alt="" style="width:320px; height:270px;">
+                                class="img-fluid mb-2 px-2" alt="" style="width:320px; height:270px;">
                         </a>
-                           <input id="jImg" name="jImg" value="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-75">
+                           <input id="jImg" name="jImg" value="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
                         
                      </div>
 
-                     <div class="col-12 col-sm-6 d-flex flex-wrap justify-content-around px-1">
+                     <div class="col-12 col-sm-6 d-flex flex-wrap justify-content-start  px-3  mt-1 border">
                         <a href=" ${job[0].jScope || 'public/assets/images/placeholder.jpeg'}" target="_blank">
                            <img src="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " 
-                                 class="img-fluid mb-2" alt="" style="width:320px; height:270px;">
+                                 class="img-fluid mb-2 px-2" alt="" style="width:320px; height:270px;">
                         </a>
-                           <input id="jScope" name="jScope" value="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-75">
+                           <input id="jScope" name="jScope" value="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
                        
                      </div>            
                      
