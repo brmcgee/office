@@ -1,6 +1,6 @@
 function fetchCustomerRecord (custId) {
     customersRoot.innerHTML = customerRecordHeader(custId);
-    customersRoot.innerHTML += htmlCustomerRecordForm();
+    customersRoot.innerHTML += htmlCustomerRecordForm(custId);
 
     handleFetchCustomerRecord (custId);
     // in async function gets data and populates addCustomerForm
@@ -50,7 +50,7 @@ function populateCustomerForm(data) {
 }
 
 
-function htmlCustomerRecordForm () {
+function htmlCustomerRecordForm (custId) {
     let html = `
     
              <div id="addCustomerForm" class="m-0 p-0">
@@ -78,8 +78,8 @@ function htmlCustomerRecordForm () {
                             </div>
         
                             <div class="col-sm-4 col-md-2">
-                                <label for="custId" class="form-label">CustId:</label>
-                                <input type="text" class="form-control" id="custId"  name="custId" disabled>
+                                <label for="custId" class="form-label">Cust Id:</label>
+                                <input type="text" class="form-control" id="custId" name="custId" disabled>
                             </div>
             
                         </div>
@@ -148,9 +148,16 @@ function htmlCustomerRecordForm () {
             
                         </div>
                         <div class="form-footer d-flex justify-content-end">
-                            <button type="button" class="btn btn-danger me-1" onclick="clearRoot()">Close</button>
-                            <button type="button" class="btn btn-secondary me-1" onclick="clearCustomerForm()">Clear</button>
-                            <button type="button" onclick="handleUpdateCustomerRecord()" class="btn btn-primary">Submit</button>
+
+                            <button type="button" onclick="getJobsByCustomers(${custId})" class="btn btn-dark me-2">
+                                <img class="pe-1 pb-1" src="public/assets/icons/open-green.png" alt="" width="25">
+                                    Open
+                            </button>
+
+                            <div class="btn-group">
+                            <button type="button" class="btn btn-danger" onclick="clearRoot()">Close</button>
+                            <button type="button" class="btn btn-secondary" onclick="clearCustomerForm()">Clear</button>
+                            </div>
                         </div>
             
                   </form>

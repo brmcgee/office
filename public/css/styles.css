@@ -6,9 +6,9 @@ body{
     margin-right: auto;
     background-color: rgb(233, 233, 233);
     font-family: "Roboto", sans-serif;
-    font-family: "Host Grotesk", sans-serif;
-    font-family: "Rubik", sans-serif;
-    font-weight: 400;
+    /* font-family: "Host Grotesk", sans-serif; */
+    /* font-family: "Rubik", sans-serif; */
+    font-weight: 500;
     font-style: normal;
     font-size: 16px;
 }
@@ -42,6 +42,10 @@ textarea{
     box-shadow: rgba(221, 235, 247, 0.2);
 }
 
+.bm-text-primary {
+    color: rgb(43, 105, 197);
+    font-weight: 500;
+}
 .bm-header-primary {
     background-color: rgb(43, 105, 197);
     box-shadow: 5px 6px 12px rgba(23, 43, 49, 0.5);

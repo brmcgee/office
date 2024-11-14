@@ -110,7 +110,7 @@ function htmlJobDetails(job) {
    // job container
    segment += `
                   <div class="job col-12 col-md-4">
-                     <div class="bm-job-container  px-2">
+                     <div class="bm-job-container  bm-bg-gray-light ms-1 px-2">
 
                         <div class="w-100">
                            <label for="jName" >Job name</label>
@@ -150,24 +150,28 @@ function htmlJobDetails(job) {
    // date container  
    segment += `               
                   <div class="date col-12 col-md-4">
-                     <div class="bm-job-container px-2 me-1 bm-bg-gray-light">
+                     <div class="bm-job-container px-2 pt-2 pb-2 me-1 bm-bg-gray-light">
                   
+
+
+
+
                            <div class="d-flex justify-content-end px-1 pb-1 ">
-                              <label for="po" class="text-dark pe-2">PO</label>
-                              <input type="text" class="form-control bm-input" id="po" name="po" value="${job[0].po} ">
+                              <label for="po" class="text-dark pe-2"  style="width:100px;">PO</label>
+                              <input type="text" class="form-control bm-input text-end" id="po" name="po" value="${job[0].po} ">
                            </div>
                            
                            <div class="d-flex justify-content-end px-1 pb-1 ">
-                              <label for="jDate" class="text-dark pe-2">Date</label>
-                              <input type="text" class="form-control bm-input" id="jDate" name="jDate" value="${job[0].jDate}">
+                              <label for="jDate" class="text-dark pe-2"  style="width:100px;">Date</label>
+                              <input type="text" class="form-control bm-input text-end" id="jDate" name="jDate" value="${job[0].jDate}">
                            </div>               
 
                
                
                         <div class="d-flex justify-content-end px-1 pb-1 ">
-                           <label for="progress" class="form-label text-primary pe-2">Status: </label>
+                           <label for="progress" class="form-label pe-2"  style="width:100px;">Status: </label>
                            <select type="text" class="form-control py-1" id="progress" name="progress" required >
-                           <option selected>${job[0].status}</option>
+                           <option selected class="text-end">${job[0].status}</option>
                               <option value="Estimate">Estimate</option>
                               <option value="Ordered">Ordered</option>
                               <option value="Scheduled">Scheduled</option>
@@ -177,9 +181,9 @@ function htmlJobDetails(job) {
                         </div>
 
                         <div class="d-flex justify-content-end px-1 pb-1 ">
-                           <label for="tech" class="form-label pe-2">Tech: <span class="text-primary">${getTechName(job[0].tech)}</span> </label>
+                           <label for="tech" class="form-label pe-2"  style="width:100px;">Tech: <span class="bm-text-primary">${getTechName(job[0].tech)}</span> </label>
                            <select type="text" class="form-control py-1" id="tech" name="tech" required >
-                           //  <option selected>${(job[0].tech)}</option>
+                            <option selected class="text-end">${(job[0].tech)}</option>
                               <option value="0">Admin</option>
                               <option value="1">Albert</option>
                               <option value="2">Mike</option>
