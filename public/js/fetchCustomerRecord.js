@@ -58,7 +58,7 @@ function htmlCustomerRecordForm (custId) {
         
                     <form action="http://localhost:5200/add-customer" method="POST" id="addCustomer">
                     
-                        ${header('Customer Record')}
+                        ${header('Customer Record ')}
             
                         <div class="row pb-2 pt-3">
             
@@ -71,16 +71,24 @@ function htmlCustomerRecordForm (custId) {
                                 <label for="lname" class="form-label">Last:</label>
                                 <input type="text" class="form-control" id="lname" name="lname" required>
                             </div>
-            
+                      
+                            <div class="col-sm-4 col-md-2">
+                                <label for="custId" hidden class="form-label">Cust Id:</label>
+                                <input type="text" hidden class="form-control" id="custId" name="custId" disabled>
+          
+                                <button type="button" onclick="handleFetchJobsList(${custId})" class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 text-success">
+                                        <img class="pe-1 pb-1" src="public/assets/icons/open-green.png" alt="" width="30">
+                                            Get Jobs
+                                </button>
+ 
+                              </div>
+                      
                             <div class="col-sm-8 col-md-4">
                                 <label for="date" class="form-label">Date:</label>
                                 <input type="text" class="form-control" id="date" required name="date">
                             </div>
         
-                            <div class="col-sm-4 col-md-2">
-                                <label for="custId" class="form-label">Cust Id:</label>
-                                <input type="text" class="form-control" id="custId" name="custId" disabled>
-                            </div>
+
             
                         </div>
             
@@ -133,13 +141,19 @@ function htmlCustomerRecordForm (custId) {
                         <div class="row pb-2">
                             <div class="col-sm-12 col-md-6">
                                 <label for="notes" class="form-label">Notes:</label>
-                                <textarea type="text" class="form-control" id="notes" placeholder="Notes" name="notes" rows="13"></textarea>
+                                <textarea type="text" class="form-control" id="notes" placeholder="Notes" name="notes" rows="16"></textarea>
                             </div>
             
-                            <div class="col-sm-12 col-md-6 d-none d-sm-block">
-                                <label for="jobList" class="form-label">Job List:</label>
-                                <textarea type="text" class="form-control" id="jobList" placeholder="Job list" name="jobList" rows="10">
-                                </textarea>
+                            <div class="col-sm-12 col-md-6 d-sm-block">
+                            
+
+
+                                        <label for="jobList" class="form-label"></label>
+
+
+
+                                        <div id="jobList" class="form-control"style="height:345px;overflow-y:scroll;"></div>
+
 
                                 <label for="img" class="form-label">Img url</label>
                                 <input type="text" class="form-control" id="img"  name="img">
@@ -149,14 +163,14 @@ function htmlCustomerRecordForm (custId) {
                         </div>
                         <div class="form-footer d-flex justify-content-end">
 
-                            <button type="button" onclick="getJobsByCustomers(${custId})" class="btn btn-dark me-2">
+                            <button type="button" onclick="getJobsByCustomers(${custId})" class="btn btn-dark  btn-sm  m-b-10 p-l-5 me-3">
                                 <img class="pe-1 pb-1" src="public/assets/icons/open-green.png" alt="" width="25">
                                     Open
                             </button>
 
                             <div class="btn-group">
-                            <button type="button" class="btn btn-danger" onclick="clearRoot()">Close</button>
-                            <button type="button" class="btn btn-secondary" onclick="clearCustomerForm()">Clear</button>
+                                <button type="button" class="btn btn-danger  btn-sm  m-b-10 p-l-5" onclick="clearRoot()">Close</button>
+                                <button type="button" class="btn btn-secondary  btn-sm  m-b-10 p-l-5" onclick="clearCustomerForm()">Clear</button>
                             </div>
                         </div>
             
@@ -172,8 +186,181 @@ function htmlCustomerRecordForm (custId) {
 
 function handleUpdateCustomerRecord() {
 
-    alert('need to update record in backend')
+
+    let custId = document.getElementById('custId').value;
+    let fname = document.getElementById('fname').value;
+    let lname = document.getElementById('lname').value;
+    let address = document.getElementById('address').value;
+    let city = document.getElementById('city').value;
+    let state = document.getElementById('state').value;
+    let zip = document.getElementById('zip').value;   
+    let phone = document.getElementById('phone').value;
+    let cell = document.getElementById('cell').value;
+    let email = document.getElementById('email').value;
+    let notes = document.getElementById('notes').value
+    let date = document.getElementById('date').value;
+    let img = document.getElementById('img').value
+  
+    alert('Need to handle add to db - data recieved :' + custId + '/' + fname)
 }
+
+
+
+async function handleFetchJobsList(custId) {
+   
+    let jobListRoot = document.getElementById('jobList');
+    let url = `${host}jobs/${custId}`;
+    console.log(url)
+    try {
+        const response = await fetch(url);
+        let html = ``;
+        try {
+            const data = await response.json();
+              
+                if (data.length == 0) { 
+                    jobListRoot.innerHTML =`<p class='bm-alert-info'>No jobs found....</p>`
+                    jobListRoot.innerHTML += customersButton();
+                    return;
+                 }
+
+                // html += jobByCustomerTemplate(data) 
+                jobListRoot.innerHTML = recordCustomerTemplate(data);
+                 console.log(data)
+        }
+        catch (parseError) {
+            
+           
+            customersRoot.innerHTML = `<p class='bm-alert-warning'>Network Error ${parseError}</p>`
+            console.log('Failed to parse JSON: ' + parseError);
+        }
+    } catch (networkError) {
+        console.log('Network request failed: ', networkError);
+        
+    }  
+    fetchCustomerById(custId);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function recordCustomerTemplate(jobs) {
+
+    let html = '';
+    html += `
+
+        <div class=" col-12 mx-auto  bm-page">
+
+            <div class="bm-header-primary">
+                <h5 class="">Job lists: <span id="jobHeader"></span>
+                        <span class="float-end pe-3 badge bg-light text-primary"> Total: ${jobs.length}</span>
+                </h5>
+            </div>
+            
+            <table class="table table-stripe">
+                <thead class="thead">
+                    <tr>
+                        <th scope="col">Status</th>
+                        <th scope="col">Jobname</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Date</th> 
+                        <th scope="col">Tech</th> 
+                    </tr>
+                </thead>
+                <tbody>`;
+
+    if (jobs.length > 1) {
+
+        jobs.forEach(c => {
+            html += recordCustomerTemplateInner(c);
+        });
+
+    } else {
+        html += recordCustomerTemplateInnerSingle(jobs)
+    }
+
+
+    html += `  </tbody>
+            </table>`;
+
+    html += customersButton();
+    return html;
+}
+
+function recordCustomerTemplateInnerSingle(job) {
+
+    let html = '';
+    html += `
+                <tr>
+                    <th scope="row">
+                        ${getIcon(job[0].status) }${job[0].status}
+                    </th>
+                    <td>${job[0].jName}</td>
+                    <td>${job[0].jAddress} ${job[0].jCity}</td>
+                    <td>${job[0].jDate}</td>   
+                    <td> ${job[0].tech}</td>                  
+                </tr> 
+            </div>  
+            `;
+    return html;
+}
+function recordCustomerTemplateInner(job) {
+
+    let html = '';
+    html += `
+                <tr>
+                    <th scope="row">
+                           ${getIcon(job.status)}${job.status}
+                    </th>
+                    <td>${job.jName}</td>
+                    <td>${job.jAddress} ${job.jCity}</td>
+                    <td>${job.jDate}</td> 
+                    <td>${getTechName(job.tech)}        </td>                    
+                </tr> 
+            </div>  
+            `;
+    return html;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -188,25 +375,28 @@ function customerRecordHeader(custId) {
 
 
          <div class="d-flex justify-content-start pt-1">
-            <button id="1" class="bg-transparent border-0 pe-2" type="button" onclick="getJobsByCustomers(${custId})">
+            <button id="1" class="btn btn-sm  m-b-10 p-l-5" type="button" onclick="getJobsByCustomers(${custId})">
                <img class="pb-1" src="public/assets/icons/open-green.png" alt="" width="22">
                Open
             </button>
 
-            ${customersButton()}
+            <button id="${custId}" class="btn btn-sm  m-b-10 p-l-5" type="button" onclick="addJob(this.id)">
+                <img class="pb-1" src="public/assets/icons/circle-blue-add.png" alt="" width="20">
+                New
+            </button>
 
 
             <div class="print-header d-flex justify-content-between px-1 pb-0">
 
             <span class="">
-               <a href="javascript:;"  onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5">
+               <a href="javascript:;"  onclick="window.print()" class="btn btn-sm  m-b-10 p-l-5">
                <img class="pe-1 pb-1" src="public/assets/icons/print-blue.png" alt="" width="30"> 
                   Print
                </a>
             </span>
 
             <div class="float-end">
-               <a href="javascript:;"  onclick="alert('handle save needs added to db ... bm')" class="btn btn-sm btn-white m-b-10 p-l-5">
+               <a href="javascript:;"  onclick="handleUpdateCustomerRecord()" class="btn btn-sm m-b-10 p-l-5">
                <img class="pe-1 pb-1" src="public/assets/icons/save-red.png" alt="" width="30"> 
                   Save
                </a>
@@ -216,3 +406,7 @@ function customerRecordHeader(custId) {
     
     `
 }
+
+
+
+
