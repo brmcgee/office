@@ -50,7 +50,7 @@ function populateCustomerForm(data) {
     let img = document.getElementById('img').value = data[0].img;
     let email = document.getElementById('email').value = data[0].email;
 
-    
+
 
 }
 
@@ -84,7 +84,13 @@ function htmlCustomerRecordForm (custId) {
                             <div class="col-sm-4 col-md-3">
                                 <label for="custId" hidden class="form-label">Cust Id:</label>
                                 <input type="text" hidden class="form-control w-25" id="custId" name="custId" disabled>
-         
+                                            
+                                
+                                <button type="button" onclick="handleFetchJobsList(${custId})" 
+                                                        class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 bm-text-primary fs-6">
+                                                <img class="pe-1 pb-1 " src="public/assets/icons/view-blue-dk.png" alt="" width="30">
+                                              View Jobs
+                                            </button>         
 
                             </div>
                       
@@ -162,11 +168,7 @@ function htmlCustomerRecordForm (custId) {
 
                                         <div id="jobList" class="form-control"style="height:345px;overflow-y:scroll;">
                                         
-                                            <button type="button" onclick="handleFetchJobsList(${custId})" 
-                                                        class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 bm-text-primary fs-6">
-                                                <img class="pe-1 pb-1 " src="public/assets/icons/view-blue-dk.png" alt="" width="30">
-                                              View Jobs
-                                            </button>
+
                                         
                                         
                                         </div>
@@ -220,7 +222,7 @@ function handleUpdateCustomerRecord() {
 async function handleFetchJobsList(custId) {
    
     let jobListRoot = document.getElementById('jobList');
-    let url = `${host}jobs/${custId}`;
+    let url = `${host}/jobs/${custId}`;
     console.log(url)
     try {
         const response = await fetch(url);
@@ -231,7 +233,7 @@ async function handleFetchJobsList(custId) {
               
                 if (data.length == 0) { 
                     jobListRoot.innerHTML =`<p class='bm-alert-info'>No jobs found....</p>`
-                    jobListRoot.innerHTML += fetchCustomerRecord(custId);
+                    // jobListRoot.innerHTML += fetchCustomerRecord(custId);
                     return;
                  }
 
@@ -248,7 +250,7 @@ async function handleFetchJobsList(custId) {
         console.log('Network request failed: ', networkError);
         
     }  
-    fetchCustomerById(custId);
+    // fetchCustomerById(custId);
 
 }
 
@@ -303,7 +305,7 @@ function recordCustomerTemplateInnerSingle(job) {
     html += `
                 <tr>
                     <td>
-                        <button type="button" onclick="fetchJobDetails(${job[0].custId})" class="btn btn-transparent border-0  btn-sm me-0 bm-text-primary">
+                        <button type="button" onclick="fetchJobDetails(${job[0].jobId})" class="btn btn-transparent border-0  btn-sm me-0 bm-text-primary">
                         <img class="pe-1 pb-1" src="public/assets/icons/view-blue-dk.png" alt="" width="25">
                             View
                         </button> 
@@ -323,7 +325,7 @@ function recordCustomerTemplateInner(job) {
     html += `
 
                 <tr>
-                    <td><button type="button" onclick="fetchJobDetails(${job.custId})" class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 text-success">
+                    <td><button type="button" onclick="fetchJobDetails(${job.jobId})" class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 text-success">
                         <img class="pe-1 pb-1" src="public/assets/icons/open-green.png" alt="" width="30">
                             View
                         </button> 
