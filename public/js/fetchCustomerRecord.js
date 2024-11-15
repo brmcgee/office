@@ -1,6 +1,7 @@
 function fetchCustomerRecord (custId) {
     customersRoot.innerHTML = customerRecordHeader(custId);
     customersRoot.innerHTML += htmlCustomerRecordForm(custId);
+    handleFetchJobsList(custId)
 
     handleFetchCustomerRecord (custId);
     // in async function gets data and populates addCustomerForm
@@ -49,6 +50,10 @@ function populateCustomerForm(data) {
 
 }
 
+/* <button type="button" onclick="handleFetchJobsList(${custId})" class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 text-success">
+<img class="pe-1 pb-1" src="public/assets/icons/open-green.png" alt="" width="30">
+    Get Jobs
+</button> */
 
 function htmlCustomerRecordForm (custId) {
     let html = `
@@ -76,10 +81,7 @@ function htmlCustomerRecordForm (custId) {
                                 <label for="custId" hidden class="form-label">Cust Id:</label>
                                 <input type="text" hidden class="form-control" id="custId" name="custId" disabled>
           
-                                <button type="button" onclick="handleFetchJobsList(${custId})" class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 text-success">
-                                        <img class="pe-1 pb-1" src="public/assets/icons/open-green.png" alt="" width="30">
-                                            Get Jobs
-                                </button>
+
  
                               </div>
                       
@@ -271,7 +273,7 @@ function recordCustomerTemplate(jobs) {
     let html = '';
     html += `
 
-        <div class=" col-12 mx-auto  bm-page">
+        <div class=" col-12 mx-auto ">
 
             <div class="bm-header-primary">
                 <h5 class="">Job lists: <span id="jobHeader"></span>
@@ -282,11 +284,10 @@ function recordCustomerTemplate(jobs) {
             <table class="table table-stripe">
                 <thead class="thead">
                     <tr>
-                        <th scope="col">Status</th>
                         <th scope="col">Jobname</th>
                         <th scope="col">Address</th>
                         <th scope="col">Date</th> 
-                        <th scope="col">Tech</th> 
+                        <th scope="col">Status</th> 
                     </tr>
                 </thead>
                 <tbody>`;
@@ -305,7 +306,6 @@ function recordCustomerTemplate(jobs) {
     html += `  </tbody>
             </table>`;
 
-    html += customersButton();
     return html;
 }
 
@@ -314,13 +314,10 @@ function recordCustomerTemplateInnerSingle(job) {
     let html = '';
     html += `
                 <tr>
-                    <th scope="row">
-                        ${getIcon(job[0].status) }${job[0].status}
-                    </th>
-                    <td>${job[0].jName}</td>
+                    <th>${job[0].jName}</td>
                     <td>${job[0].jAddress} ${job[0].jCity}</td>
                     <td>${job[0].jDate}</td>   
-                    <td> ${job[0].tech}</td>                  
+                    <td>${getIcon(job[0].status) }${job[0].status}</td>                  
                 </tr> 
             </div>  
             `;
@@ -330,14 +327,12 @@ function recordCustomerTemplateInner(job) {
 
     let html = '';
     html += `
+
                 <tr>
-                    <th scope="row">
-                           ${getIcon(job.status)}${job.status}
-                    </th>
                     <td>${job.jName}</td>
                     <td>${job.jAddress} ${job.jCity}</td>
                     <td>${job.jDate}</td> 
-                    <td>${getTechName(job.tech)}        </td>                    
+                    <td>${getIcon(job.status)}${job.status}</td>                    
                 </tr> 
             </div>  
             `;
