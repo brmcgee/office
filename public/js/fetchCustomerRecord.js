@@ -7,6 +7,11 @@ function fetchCustomerRecord (custId) {
     handleFetchCustomerRecord (custId);
     // in async function gets data and populates addCustomerForm
     // populateCustomerForm(data);
+
+    
+
+    // adds jobs 
+    handleFetchJobsList(custId)
    
 }
 
