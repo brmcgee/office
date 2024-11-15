@@ -92,7 +92,7 @@ function htmlCustomerRecordForm (custId) {
                                             
                                 
                                 <button type="button" onclick="handleFetchJobsList(${custId})" 
-                                                        class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 bm-text-primary fs-6">
+                                                        class=" d-none btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 bm-text-primary fs-6">
                                                 <img class="pe-1 pb-1 " src="public/assets/icons/view-blue-dk.png" alt="" width="30">
                                               View Jobs
                                             </button>         
@@ -237,7 +237,11 @@ async function handleFetchJobsList(custId) {
             const data = await response.json();
               
                 if (data.length == 0) { 
-                    jobListRoot.innerHTML =`<p class='bm-alert-info'>No jobs found....</p>`
+                    jobListRoot.innerHTML =`<p class='bm-alert-info'>No jobs found for customer....</p>
+                                                        <button id="${custId}" class="btn btn-sm  m-b-10 p-l-5" type="button" onclick="addJob(this.id)">
+                                                            <img class="pb-1" src="public/assets/icons/circle-blue-add.png" alt="" width="20">
+                                                                New Job
+                                                        </button>`
                     // jobListRoot.innerHTML += fetchCustomerRecord(custId);
                     return;
                  }
