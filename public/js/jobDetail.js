@@ -16,14 +16,12 @@ function htmlJobDetails(job) {
 
 
          <div class="d-flex justify-content-start pt-0">
-            <button id="1" class="bg-transparent border-0 pe-2" type="button" onclick="getJobsByCustomers(${job[0].custId})">
-               <img class="pb-1" src="public/assets/icons/back-green.png" alt="" width="22">
-               Back
-            </button>
 
-            ${customersButton()}
-
-            ${jobsButton()}
+            <button onclick="fetchCustomerRecord(${job[0].custId})" class="btn btn-sm btn-white m-b-10 p-l-5">
+               <img class="pb-1" src="public/assets/icons/contact-green.png" alt="" width="22">
+                  Customer
+               </button>
+            
 
 
             <div class="print-header d-flex justify-content-between px-1 pb-0">

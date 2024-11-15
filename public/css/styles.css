@@ -10,7 +10,7 @@ body{
     /* font-family: "Rubik", sans-serif; */
     font-weight: 500;
     font-style: normal;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -20,6 +20,20 @@ body{
         padding: 0;
         margin: 0;
     }
+
+    .form-label, label {
+        font-size: 13px;
+       
+    }
+    .form-control {
+        font-size: 14px;
+        padding-top: 5px;
+        margin-top: 2px;
+    }
+    .table {
+        font-size: 12px;
+    }
+    
   }
 
 .bm-bg-light {

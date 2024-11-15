@@ -1,12 +1,13 @@
 function fetchCustomerRecord (custId) {
     customersRoot.innerHTML = customerRecordHeader(custId);
     customersRoot.innerHTML += htmlCustomerRecordForm(custId);
-    handleFetchJobsList(custId)
+    
 
+    
     handleFetchCustomerRecord (custId);
     // in async function gets data and populates addCustomerForm
-    populateCustomerForm(data);
-
+    // populateCustomerForm(data);
+   
 }
 
 async function handleFetchCustomerRecord(custId) {
@@ -19,6 +20,7 @@ async function handleFetchCustomerRecord(custId) {
                     const data = await response.json()
 
                     populateCustomerForm(data);
+                    
 
                 } 
                 catch (parseError) {
@@ -48,6 +50,8 @@ function populateCustomerForm(data) {
     let img = document.getElementById('img').value = data[0].img;
     let email = document.getElementById('email').value = data[0].email;
 
+    
+
 }
 
 /* <button type="button" onclick="handleFetchJobsList(${custId})" class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 text-success">
@@ -61,11 +65,11 @@ function htmlCustomerRecordForm (custId) {
              <div id="addCustomerForm" class="m-0 p-0">
                 <div class="add-customer col-12 mx-auto bm-page">
         
-                    <form action="http://localhost:5200/add-customer" method="POST" id="addCustomer">
+                    <form id="addCustomer" class="">
                     
                         ${header('Customer Record ')}
             
-                        <div class="row pb-2 pt-3">
+                        <div class="row pb-2 pt-3 bm-bg-gray-light mx-1 px-2 pt-1 mt-1">
             
                             <div class="col-sm-12 col-md-3">
                                 <label for="fname" class="form-label">First:</label>
@@ -77,15 +81,14 @@ function htmlCustomerRecordForm (custId) {
                                 <input type="text" class="form-control" id="lname" name="lname" required>
                             </div>
                       
-                            <div class="col-sm-4 col-md-2">
+                            <div class="col-sm-4 col-md-3">
                                 <label for="custId" hidden class="form-label">Cust Id:</label>
-                                <input type="text" hidden class="form-control" id="custId" name="custId" disabled>
-          
+                                <input type="text" hidden class="form-control w-25" id="custId" name="custId" disabled>
+         
 
- 
-                              </div>
+                            </div>
                       
-                            <div class="col-sm-8 col-md-4">
+                            <div class="col-sm-8 col-md-3">
                                 <label for="date" class="form-label">Date:</label>
                                 <input type="text" class="form-control" id="date" required name="date">
                             </div>
@@ -93,8 +96,25 @@ function htmlCustomerRecordForm (custId) {
 
             
                         </div>
+                        
             
-                        <div class="row pb-2">
+            
+                        <div class="row pb-2 bm-bg-gray-light mx-1 px-2 pt-1 mt-1">
+        
+                            <div class="col-sm-12 col-md-6">
+                                <label for="address" class="form-label">Address:</label>
+                                <input type="text" class="form-control" id="address" required name="address">
+                            </div>
+        
+                            <div class="col-sm-12 col-md-6">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+               
+                        </div>  
+                        
+                        
+                        <div class="row pb-2 bm-bg-gray-light mx-1 px-2 pt-1 mt-1">
             
                             <div class="col-12 col-sm-6">
                                 <label for="phone" class="form-label">Phone:</label>
@@ -107,23 +127,9 @@ function htmlCustomerRecordForm (custId) {
                             </div>
             
             
-                        </div>
-            
-                        <div class="row pb-2">
-        
-                            <div class="col-sm-12 col-md-6">
-                                <label for="address" class="form-label">Address:</label>
-                                <input type="text" class="form-control" id="address" required name="address">
-                            </div>
-        
-                            <div class="col-sm-12 col-md-6">
-                                <label for="email" class="form-label">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email">
-                            </div>
-               
-                        </div>    
+                        </div>                    
                         
-                        <div class="row pb-2">
+                        <div class="row pb-2 bm-bg-gray-light mx-1 px-2 pt-1 mt-1">
                             <div class="col-sm-12 col-md-6">
                                 <label for="city" class="form-label">City:</label>
                                 <input type="text" class="form-control" id="city" name="city">
@@ -140,13 +146,13 @@ function htmlCustomerRecordForm (custId) {
                             </div>        
                         </div>
             
-                        <div class="row pb-2">
-                            <div class="col-sm-12 col-md-6">
+                        <div class="row pb-2 pt-1 m-0 mt-1"style="">
+                            <div class="col-sm-12 col-md-5">
                                 <label for="notes" class="form-label">Notes:</label>
                                 <textarea type="text" class="form-control" id="notes" placeholder="Notes" name="notes" rows="16"></textarea>
                             </div>
             
-                            <div class="col-sm-12 col-md-6 d-sm-block">
+                            <div class="col-sm-12 col-md-7 d-sm-block">
                             
 
 
@@ -154,7 +160,16 @@ function htmlCustomerRecordForm (custId) {
 
 
 
-                                        <div id="jobList" class="form-control"style="height:345px;overflow-y:scroll;"></div>
+                                        <div id="jobList" class="form-control"style="height:345px;overflow-y:scroll;">
+                                        
+                                            <button type="button" onclick="handleFetchJobsList(${custId})" 
+                                                        class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 bm-text-primary fs-6">
+                                                <img class="pe-1 pb-1 " src="public/assets/icons/view-blue-dk.png" alt="" width="30">
+                                              View Jobs
+                                            </button>
+                                        
+                                        
+                                        </div>
 
 
                                 <label for="img" class="form-label">Img url</label>
@@ -165,14 +180,8 @@ function htmlCustomerRecordForm (custId) {
                         </div>
                         <div class="form-footer d-flex justify-content-end">
 
-                            <button type="button" onclick="getJobsByCustomers(${custId})" class="btn btn-dark  btn-sm  m-b-10 p-l-5 me-3">
-                                <img class="pe-1 pb-1" src="public/assets/icons/open-green.png" alt="" width="25">
-                                    Open
-                            </button>
-
                             <div class="btn-group">
                                 <button type="button" class="btn btn-danger  btn-sm  m-b-10 p-l-5" onclick="clearRoot()">Close</button>
-                                <button type="button" class="btn btn-secondary  btn-sm  m-b-10 p-l-5" onclick="clearCustomerForm()">Clear</button>
                             </div>
                         </div>
             
@@ -215,19 +224,19 @@ async function handleFetchJobsList(custId) {
     console.log(url)
     try {
         const response = await fetch(url);
+        
         let html = ``;
         try {
             const data = await response.json();
               
                 if (data.length == 0) { 
                     jobListRoot.innerHTML =`<p class='bm-alert-info'>No jobs found....</p>`
-                    jobListRoot.innerHTML += customersButton();
+                    jobListRoot.innerHTML += fetchCustomerRecord(custId);
                     return;
                  }
 
-                // html += jobByCustomerTemplate(data) 
                 jobListRoot.innerHTML = recordCustomerTemplate(data);
-                 console.log(data)
+
         }
         catch (parseError) {
             
@@ -242,28 +251,6 @@ async function handleFetchJobsList(custId) {
     fetchCustomerById(custId);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -284,7 +271,8 @@ function recordCustomerTemplate(jobs) {
             <table class="table table-stripe">
                 <thead class="thead">
                     <tr>
-                        <th scope="col">Jobname</th>
+                        <th>Job</th>
+                        <th scope="col">PO</th>
                         <th scope="col">Address</th>
                         <th scope="col">Date</th> 
                         <th scope="col">Status</th> 
@@ -314,7 +302,13 @@ function recordCustomerTemplateInnerSingle(job) {
     let html = '';
     html += `
                 <tr>
-                    <th>${job[0].jName}</td>
+                    <td>
+                        <button type="button" onclick="fetchJobDetails(${job[0].custId})" class="btn btn-transparent border-0  btn-sm me-0 bm-text-primary">
+                        <img class="pe-1 pb-1" src="public/assets/icons/view-blue-dk.png" alt="" width="25">
+                            View
+                        </button> 
+                    </td>
+                    <td>${job[0].po}</td>
                     <td>${job[0].jAddress} ${job[0].jCity}</td>
                     <td>${job[0].jDate}</td>   
                     <td>${getIcon(job[0].status) }${job[0].status}</td>                  
@@ -329,7 +323,12 @@ function recordCustomerTemplateInner(job) {
     html += `
 
                 <tr>
-                    <td>${job.jName}</td>
+                    <td><button type="button" onclick="fetchJobDetails(${job.custId})" class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 text-success">
+                        <img class="pe-1 pb-1" src="public/assets/icons/open-green.png" alt="" width="30">
+                            View
+                        </button> 
+                    </td>
+                    <td>${job.po}</td>
                     <td>${job.jAddress} ${job.jCity}</td>
                     <td>${job.jDate}</td> 
                     <td>${getIcon(job.status)}${job.status}</td>                    
@@ -338,24 +337,6 @@ function recordCustomerTemplateInner(job) {
             `;
     return html;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -371,8 +352,8 @@ function customerRecordHeader(custId) {
 
          <div class="d-flex justify-content-start pt-1">
             <button id="1" class="btn btn-sm  m-b-10 p-l-5" type="button" onclick="getJobsByCustomers(${custId})">
-               <img class="pb-1" src="public/assets/icons/open-green.png" alt="" width="22">
-               Open
+               <img class="pb-1" src="public/assets/icons/leaderboard-green.png" alt="" width="22">
+               Details
             </button>
 
             <button id="${custId}" class="btn btn-sm  m-b-10 p-l-5" type="button" onclick="addJob(this.id)">
