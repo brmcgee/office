@@ -211,7 +211,7 @@ function htmlJobDetails(job) {
 
                         <input id="jImg" hidden name="jImg" value="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
                         
-                        <button type="submit" class="btn btn-primary btn-small" data-bs-toggle="modal" data-bs-target="#img1Modal">
+                        <button type="submit" class="btn btn-dark btn-small" data-bs-toggle="modal" data-bs-target="#img1Modal">
                            Upload Image
                         </button>
                      
@@ -224,7 +224,7 @@ function htmlJobDetails(job) {
                         </a>
                            <input id="jScope" hidden name="jScope" value="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
                            
-                           <button type="submit" class="btn btn-primary btn-small" data-bs-toggle="modal" data-bs-target="#img2Modal">
+                           <button type="submit" class="btn  btn-dark btn-small" data-bs-toggle="modal" data-bs-target="#img2Modal">
                                  Upload Image
                            </button> 
                      </div>            
