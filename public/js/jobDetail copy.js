@@ -203,100 +203,27 @@ function htmlJobDetails(job) {
 
                <div class="row mt-3">
 
-                     <div class="col-12 col-md-6 d-flex flex-column flex-nowrap justify-content-start  p-px-3  mt-1 border">
+                     <div class="col-12 col-md-6 d-flex flex-wrap justify-content-start  p-px-3  mt-1 border">
                         <a href=" ${job[0].jImg || 'public/assets/images/placeholder.jpeg'}" target="_blank">
                            <img src="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " 
                                 class="img-fluid img-thumbnail mb-2 px-2" alt="" style="width:600px; height:auto;">
                         </a>
-
-                        <input id="jImg" hidden name="jImg" value="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
+                           <input id="jImg" name="jImg" value="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
                         
-                        <button type="submit" class="btn btn-primary btn-small" data-bs-toggle="modal" data-bs-target="#img1Modal">
-                           Upload Image
-                        </button>
-                     
                      </div>
 
-                     <div class="col-12 col-md-6 d-flex flex-column flex-nowrap justify-content-start  p-px-3  mt-1 border">
+                     <div class="col-12 col-md-6 d-flex flex-wrap justify-content-start  px-3  mt-1 border">
                         <a href=" ${job[0].jScope || 'public/assets/images/placeholder.jpeg'}" target="_blank">
-                           <img src="${job[0].jScope || 'public/assets/images/placeholder.jpeg'}" id="jImgSrc"
+                           <img src="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " 
                                  class="img-fluid img-thumbnail mb-2 px-2" alt="" style="width:600px; height:auto;">
                         </a>
-                           <input id="jScope" hidden name="jScope" value="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
-                           
-                           <button type="submit" class="btn btn-primary btn-small" data-bs-toggle="modal" data-bs-target="#img2Modal">
-                                 Upload Image
-                           </button> 
+                           <input id="jScope" name="jScope" value="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
+                       
                      </div>            
                      
                </div>
 
-               
 
-                        <div class="modal" id="img1Modal">
-                        <div class="modal-dialog">
-                           <div class="modal-content">
-
-
-                              <div class="modal-header">
-                              <h4 class="modal-title">Upload Image</h4>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                              </div>
-
-
-                              <div class="modal-body" id="img1Body">
-                              <form ref='uploadForm' 
-                                    id='uploadForm' 
-                                    action='${host}/upload' 
-                                    method='post' 
-                                    encType="multipart/form-data">
-                                       <input type="file" name="sampleFile" class="form-control" id="fileToUpload"/>
-                                       <input hidden type="text" name="keyValue" value="jImg" class="form-control" id="keyValue"/>
-                                       <input hidden type="text" name="jobId" value="${job[0].jobId}" class="form-control" id="jobid"/>
-                                       <div class="modal-footer">
-                                          <button type='submit' value='Upload!' class="mt-1 btn btn-primary">Upload</button>
-                                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                       </div>
-                                 </form>   
-                              </div>
-                           </div>
-                        </div>
-                        </div>
-
-
-
-
-                        <div class="modal" id="img2Modal">
-                        <div class="modal-dialog">
-                           <div class="modal-content">
-
-
-                              <div class="modal-header">
-                              <h4 class="modal-title">Scope Image Upload</h4>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                              </div>
-
-
-                                 <div class="modal-body" id="img2Body">
-                                    <form ref='uploadForm' 
-                                          id='uploadForm' 
-                                          action='${host}/upload' 
-                                          method='post' 
-                                          encType="multipart/form-data">
-                                             <input type="file" name="sampleFile" class="form-control" id="fileToUpload"/>
-                                             <input type="text" hidden name="keyValue" value="jScope" class="form-control" id="keyValue"/>
-                                             <input type="text" hidden name="jobId" value="${job[0].jobId}" class="form-control" id="jobid"/>
-                                              <div class="modal-footer">
-                                                <button type='submit' value='Upload!' class="mt-1 btn btn-primary">Upload</button>
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                              </div>           
-                                    </form>   
-                                 </div>
-
-
-                           </div>
-                        </div>
-                        </div>
                
 
                </div>
