@@ -224,7 +224,7 @@ function htmlJobDetails(job) {
                         </a>
                            <input id="jScope" hidden name="jScope" value="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
                            
-                           <button type="submit" class="btn  btn-dark btn-small" data-bs-toggle="modal" data-bs-target="#img2Modal">
+                           <button type="button" class="btn  btn-dark btn-small" data-bs-toggle="modal" data-bs-target="#img2Modal">
                                  Upload Image
                            </button> 
                      </div>            
@@ -246,7 +246,7 @@ function htmlJobDetails(job) {
 
                               <div class="modal-body" id="img1Body">
                               <form ref='uploadForm' 
-                                    id='uploadForm' 
+                                    id='uploadFormImg' 
                                     action='${host}/upload' 
                                     method='post' 
                                     encType="multipart/form-data">
@@ -254,7 +254,7 @@ function htmlJobDetails(job) {
                                        <input hidden type="text" name="keyValue" value="jImg" class="form-control" id="keyValue"/>
                                        <input hidden type="text" name="jobId" value="${job[0].jobId}" class="form-control" id="jobid"/>
                                        <div class="modal-footer">
-                                          <button type='submit' value='Upload!' class="mt-1 btn btn-primary">Upload</button>
+                                          <button onclick="handleAddJobImg(event, 'jImg', 'uploadFormImg', ${job[0].jobId}, 'img1Modal')"type='button' value='Upload!' class="mt-1 btn btn-primary">Upload</button>
                                           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                        </div>
                                  </form>   
@@ -279,7 +279,7 @@ function htmlJobDetails(job) {
 
                                  <div class="modal-body" id="img2Body">
                                     <form ref='uploadForm' 
-                                          id='uploadForm' 
+                                          id='uploadFormScope' 
                                           action='${host}/upload' 
                                           method='post' 
                                           encType="multipart/form-data">
@@ -287,7 +287,7 @@ function htmlJobDetails(job) {
                                              <input type="text" hidden name="keyValue" value="jScope" class="form-control" id="keyValue"/>
                                              <input type="text" hidden name="jobId" value="${job[0].jobId}" class="form-control" id="jobid"/>
                                               <div class="modal-footer">
-                                                <button type='submit' value='Upload!' class="mt-1 btn btn-primary">Upload</button>
+                                                <button onclick="handleAddJobImg(event, 'jScope', 'uploadFormScope', ${job[0].jobId}, 'img2Modal', ${job[0].custId})" type='button' value='Upload!' class="mt-1 btn btn-primary">Upload</button>
                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                               </div>           
                                     </form>   

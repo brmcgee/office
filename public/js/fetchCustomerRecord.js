@@ -228,7 +228,7 @@ async function handleFetchJobsList(custId) {
    
     let jobListRoot = document.getElementById('jobList');
     let url = `${host}/jobs/${custId}`;
-    console.log(url)
+    // console.log(url)
     try {
         const response = await fetch(url);
         
@@ -282,8 +282,7 @@ function recordCustomerTemplate(jobs) {
             <table class="table table-stripe">
                 <thead class="thead">
                     <tr>
-                        <th>Job</th>
-                        <th scope="col">PO</th>
+                        <th>Job PO</th>
                         <th scope="col">Address</th>
                         <th scope="col">Date</th> 
                         <th scope="col">Status</th> 
@@ -315,14 +314,12 @@ function recordCustomerTemplateInnerSingle(job) {
                 <tr>
                     <td>
                         <button type="button" onclick="fetchJobDetails(${job[0].jobId})" class="btn btn-transparent border-0  btn-sm me-0 bm-text-primary">
-                        <img class="pe-1 pb-1" src="public/assets/icons/view-blue-dk.png" alt="" width="25">
-                            View
+                            ${job[0].po}
                         </button> 
                     </td>
-                    <td>${job[0].po}</td>
-                    <td>${job[0].jAddress} ${job[0].jCity}</td>
-                    <td>${job[0].jDate}</td>   
-                    <td>${getIcon(job[0].status) }${job[0].status}</td>                  
+                    <td><small>${job[0].jAddress} ${job[0].jCity}</small></td>
+                    <td><small>${job[0].jDate}</small></td>   
+                    <td>${getIcon(job[0].status)}<small>${job[0].status}</small></td>                  
                 </tr> 
             </div>  
             `;
@@ -334,15 +331,13 @@ function recordCustomerTemplateInner(job) {
     html += `
 
                 <tr>
-                    <td><button type="button" onclick="fetchJobDetails(${job.jobId})" class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 text-success">
-                        <img class="pe-1 pb-1" src="public/assets/icons/open-green.png" alt="" width="30">
-                            View
+                    <td><button type="button" onclick="fetchJobDetails(${job.jobId})" class="btn btn-transparent border-0  btn-sm  m-b-10 p-l-5 me-3 text-primary">
+                            ${job.po}
                         </button> 
                     </td>
-                    <td>${job.po}</td>
-                    <td>${job.jAddress} ${job.jCity}</td>
-                    <td>${job.jDate}</td> 
-                    <td>${getIcon(job.status)}${job.status}</td>                    
+                    <td><small>${job.jAddress} ${job.jCity}</small></td>
+                    <td><small>${job.jDate}</small></td> 
+                    <td>${getIcon(job.status)}<small>${job.status}</small></td>                    
                 </tr> 
             </div>  
             `;
