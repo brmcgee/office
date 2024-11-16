@@ -206,27 +206,30 @@ function htmlJobDetails(job) {
                      <div class="col-12 col-md-6 d-flex flex-column flex-nowrap justify-content-start  p-px-3  mt-1 border">
                         <a href=" ${job[0].jImg || 'public/assets/images/placeholder.jpeg'}" target="_blank">
                            <img src="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " 
-                                class="img-fluid img-thumbnail mb-2 px-2" alt="" style="width:600px; height:auto;">
+                                class="img-fluid img-thumbnail mb-2 px-2" alt="" style="width:auto; height:320px;">
                         </a>
 
                         <input id="jImg" hidden name="jImg" value="${job[0].jImg || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
-                        
-                        <button type="submit" class="btn btn-dark btn-small" data-bs-toggle="modal" data-bs-target="#img1Modal">
-                           Upload Image
-                        </button>
+                        <div class="ms-3">
+                           <button type="submit" class="btn btn-dark btn-small" data-bs-toggle="modal" data-bs-target="#img1Modal">
+                              <img class="pe-1 pb-1" src="public/assets/icons/upload-green.png" alt="" width="25"> Upload Image
+                           </button>
+                        </div>
                      
                      </div>
 
                      <div class="col-12 col-md-6 d-flex flex-column flex-nowrap justify-content-start  p-px-3  mt-1 border">
                         <a href=" ${job[0].jScope || 'public/assets/images/placeholder.jpeg'}" target="_blank">
                            <img src="${job[0].jScope || 'public/assets/images/placeholder.jpeg'}" id="jImgSrc"
-                                 class="img-fluid img-thumbnail mb-2 px-2" alt="" style="width:600px; height:auto;">
+                                 class="img-fluid img-thumbnail mb-2 px-2" alt="" style="width:auto; height:320px;">
                         </a>
                            <input id="jScope" hidden name="jScope" value="${job[0].jScope || 'public/assets/images/placeholder.jpeg'} " class="form-control small w-100 px-2">
                            
-                           <button type="button" class="btn  btn-dark btn-small" data-bs-toggle="modal" data-bs-target="#img2Modal">
-                                 Upload Image
-                           </button> 
+                           <div class=" ms-3">
+                              <button type="button" class="btn  btn-dark btn-small" data-bs-toggle="modal" data-bs-target="#img2Modal">
+                                    <img class="pe-1 pb-1" src="public/assets/icons/upload-green.png" alt="" width="25"> Upload Image
+                              </button> 
+                           </div>
                      </div>            
                      
                </div>
