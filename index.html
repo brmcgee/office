@@ -3,48 +3,70 @@
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title></title>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="format-detection" content="telephone=no">
+      <meta name="description" content="backoffice is a crm designed to track job progresses">
+      <meta name="title" content="backoffice - Home">
+      <meta name="url" content="https://office.boxcar.site/app" />
+      <meta name="site_name" content="backoffice" />
+      <meta name="type" content="website" />
+      <meta name="robots" content="index,follow">
+      <meta name="googlebot" content="index,follow">
+      <meta name="keywords" content="backoffice, office, back, crm" />
+      
+      <title>backoffice</title>
 
       <link rel="icon" type="image/x-icon" href="https://office.boxcar.site//favicon.ico">
-      
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
       
-      <style> html, body { overflow-x: hidden; } body { position: relative; } </style>
+      <!-- stylesheets @ office.boxcar.site  -->
       <link rel="stylesheet" href="https://office.boxcar.site/public/css/fonts.css">
       <link rel="stylesheet" href="https://office.boxcar.site/public/css/styles.css">
       <link rel="stylesheet" href="https://office.boxcar.site/public/css/bootstrap-sidebars.css">
       <link rel="stylesheet" href="https://office.boxcar.site/public/css/image-slider.css">
+      <style> html, body { overflow-x: hidden; } body { position: relative; } </style>
+
   </head>
 
   <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bm-header-primary bg-dark">
-        <div class="container-fluid">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bm-header-primary bg-dark">
+        
+      <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img class="pe-1 pb-1" src="https://office.boxcar.site/public/assets/icons/favicon.ico" alt="" width="30">
-            backoffice</a>
+              <img class="pe-1 pb-1" src="https://office.boxcar.site/public/assets/icons/favicon.ico" alt="" width="30">
+              backoffice
+          </a>
+
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#" onclick="home()">
                     Home</a>
               </li>
+
               <li class="nav-item dropdown">
+
                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Customers
                 </a>
+
                 <ul class="dropdown-menu">
                   <li><a href="#" class="dropdown-item" onclick="addCustomer()">Add Customers</a></li>
-                  <li><hr class="dropdown-divider"></li>
+                    <li><hr class="dropdown-divider"></li>
                   <li><a href="#" class="dropdown-item" onclick="fetchCustomerList()">Customers</a></li>
                   <li><a href="#" class="dropdown-item" onclick="fetchAllJobs()">Jobs</a></li>
                   <li><a href="#" class="dropdown-item" onclick="getAllImages()">Images</a></li>
-
                 </ul>
+
               </li>
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Orders
@@ -86,56 +108,48 @@
             </ul>
 
             <div id="searchRoot">
-                <form id="searchCustomerBar " class="d-flex m-0 pb-1 bm-bg-light rounded" role="search">
-                    <input id="searchBar" class="form-control" type="search" placeholder="Search customers" onkeyup="handleSearchLastName(this.value)" aria-label="Search customers">
-                    <label for=""><i class="fa fa-search ps-2 text-primary pt-2" aria-hidden="true"></i></label>
-                </form>    
-                </div>
+              <form id="searchCustomerBar " class="d-flex m-0 pb-1 bm-bg-light rounded" role="search">
+                  <input id="searchBar" class="form-control" type="search" placeholder="Search customers" onkeyup="handleSearchLastName(this.value)" aria-label="Search customers">
+                  <label for=""><i class="fa fa-search ps-2 text-primary pt-2" aria-hidden="true"></i></label>
+              </form>    
+            </div>
 
           </div>
         </div>
       </nav>
 
-
-          
-          
-
-
-
-
-
+      <!-- app entry point  -->
       <div id="menuRoot"></div>
       <div id="customersRoot" style="height: 90vh; padding-top:65px;"></div>
 
 
-    <!-- main    -->
-    <script src="https://office.boxcar.site/public/js/main.js"></script>
+      <!-- js scripts @ office.boxcar.site  -->
+      <!-- main    -->
+      <script src="https://office.boxcar.site/public/js/main.js"></script>
 
-    <!-- on btn calls  -->
-    <script src="https://office.boxcar.site/public/js/homes.js"></script>
-    <script src="https://office.boxcar.site/public/js/addCustomer.js"></script>
-    <script src="https://office.boxcar.site/public/js/addJob.js"></script>
-    <script src="https://office.boxcar.site/public/js/fetchCustomer.js"></script>
-    <script src="https://office.boxcar.site/public/js/fetchJobsList.js"></script>
-    <script src="https://office.boxcar.site/public/js/fetchAllJobs.js"></script>
-    <script src="https://office.boxcar.site/public/js/getJobsByCustomers.js"></script>
-    <script src="https://office.boxcar.site/public/js/fetchCustInfoAddJob.js"></script>
-    <script src="https://office.boxcar.site/public/js/handleAddJobImg.js"></script>
-    <script src="https://office.boxcar.site/public/js/jobDetail.js"></script>
-    <script src="https://office.boxcar.site/public/js/fetchJobsByStatus.js"></script>
-    <script src="https://office.boxcar.site/public/js/fetchCustomerRecord.js"></script>
-    <script src="https://office.boxcar.site/public/js/imageSlider.js"></script>
+      <!-- on btn calls  -->
+      <script src="https://office.boxcar.site/public/js/homes.js"></script>
+      <script src="https://office.boxcar.site/public/js/addCustomer.js"></script>
+      <script src="https://office.boxcar.site/public/js/addJob.js"></script>
+      <script src="https://office.boxcar.site/public/js/fetchCustomer.js"></script>
+      <script src="https://office.boxcar.site/public/js/fetchJobsList.js"></script>
+      <script src="https://office.boxcar.site/public/js/fetchAllJobs.js"></script>
+      <script src="https://office.boxcar.site/public/js/getJobsByCustomers.js"></script>
+      <script src="https://office.boxcar.site/public/js/fetchCustInfoAddJob.js"></script>
+      <script src="https://office.boxcar.site/public/js/handleAddJobImg.js"></script>
+      <script src="https://office.boxcar.site/public/js/jobDetail.js"></script>
+      <script src="https://office.boxcar.site/public/js/fetchJobsByStatus.js"></script>
+      <script src="https://office.boxcar.site/public/js/fetchCustomerRecord.js"></script>
+      <script src="https://office.boxcar.site/public/js/imageSlider.js"></script>
 
-    <!-- render  -->
-    <script src="http://office.boxcar.site/public/js/render.js"></script>
+      <!-- render  -->
+      <script src="http://office.boxcar.site/public/js/render.js"></script>
 
-    <!-- <script>document.addEventListener("DOMContentLoaded", fetchCustomerList() )</script> -->
-    <!-- <script>document.addEventListener("DOMContentLoaded", fetchCustomerList() )</script> -->
+      <!-- <script>document.addEventListener("DOMContentLoaded", fetchCustomerList() )</script> -->
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
   </body>
 </html>
