@@ -1,0 +1,20 @@
+.scroll-container {
+    overflow: auto;
+    white-space: nowrap;
+
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+.img-scroll {
+    margin: 6px;
+    height: 38vh;
+    max-width: 500px;
+    min-width: 325px;
+    border-radius: 5px;
+    border: 2px solid rgb(177, 177, 177);
+    box-shadow: 1px 1px 12px 1px rgb(172, 171, 171);
+
+}

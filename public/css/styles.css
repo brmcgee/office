@@ -6,36 +6,23 @@ body{
     margin-right: auto;
     background-color: rgb(233, 233, 233);
     font-family: "Roboto", sans-serif;
-    font-family: "Host Grotesk", sans-serif;
-    font-family: "Rubik", sans-serif;
+    /* font-family: "Host Grotesk", sans-serif; */
+    /* font-family: "Rubik", sans-serif; */
     font-weight: 500;
     font-style: normal;
     font-size: 17px;
 }
 
-@media only screen and (max-width: 600px) {
-    body {
-        font-size: 12px;
-        line-height: 19px;
-        padding: 0;
-        margin: 0;
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+
     }
 
-    .form-label, label {
-        font-size: 13px;
-       
-    }
-    .form-control {
-        font-size: 14px;
-        padding-top: 5px;
-        margin-top: 2px;
-    }
-    .table {
-        font-size: 12px;
-    }
-    
-  }
 
+}
 .bm-bg-light {
     background-color: rgb(233, 233, 233);
 }
@@ -58,9 +45,9 @@ textarea{
 
 }
 .form-label, label {
-    font-size: 15px;
+    font-size: 14px;
     color: rgb(88, 88, 88);
-    padding-top: 6px;
+    padding-top: 4px;
     padding-bottom: 0px;
     padding-left: 5px;
     margin-bottom: 0px;
@@ -72,24 +59,30 @@ textarea{
     background-color: rgb(247, 252, 255) ;
     color: black;
     border-radius: 3px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    margin-top: 2px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    margin-top: 1px;
 }
 
 .bm-text-primary {
     color: rgb(13, 75, 167);
     font-weight: 500;
 }
+.bm-btn-primary {
+    background-color:rgb(13, 75, 167);
+    border: rgb(7, 66, 155);
+}
 .bm-hover:hover {
     color: rgb(8, 49, 126);
 }
 .bm-btn-header {
     background-color: rgb(9, 92, 9);
+    background-color: rgb(13, 75, 167);
 }
 
 .bm-header-primary {
     background-color: rgb(25, 133, 11);
+    background-color: rgb(13, 75, 167);
     box-shadow: 5px 6px 12px rgba(23, 43, 49, 0.5);
     margin-bottom: 8px;
     color: rgb(255, 255, 255);
@@ -155,4 +148,28 @@ form {
     'wght' 400,
     'GRAD' 0,
     'opsz' 24
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    body {
+        font-size: 12px;
+        line-height: 19px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .form-label, label {
+        font-size: 13px;
+       
+    }
+    .form-control {
+        font-size: 13px;
+        padding-top: 4px;
+        margin-top: 2px;
+    }
+    .table {
+        font-size: 12px;
+    }
+    
   }
